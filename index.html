@@ -1,44 +1,13 @@
-<!DOCTYPE html>
-<html>
-<head>
-<title></title>
-<script src="https://cdn.jsdelivr.net/npm/vue"></script>
-<script>
-</script>
-</head>
-<body>
+---
+layout: default
+---
 <div id="app_2" v-if="message.length > 0">message is \( message ).</div>
-<div id="app_3" v-if="message.length > 0">message is ${ message }.</div>
-<div id="app_4" v-if="message.length > 0">message is $( message ).</div>
-<div id="app_1" v-if="message.length > 0">message is {{ message }}.</div>
 <script>
-var app1 = new Vue({
-	el: '#app_1',
-	data: {
-		message: 'Hello Vue!',
-	},
-})
-var app2 = new Vue({
+const app = new Vue({
 	delimiters: ['\\(', ')'],
 	el: '#app_2',
 	data: {
 		message: 'Hello Vue!',
 	},
-})
-var app3 = new Vue({
-	delimiters: ['${', '}'],
-	el: '#app_3',
-	data: {
-		message: 'Hello Vue!',
-	},
-})
-var app4 = new Vue({
-	delimiters: ['$(', ')'],
-	el: '#app_4',
-	data: {
-		message: 'Hello Vue!',
-	},
-})
+});
 </script>
-</body>
-</html>
