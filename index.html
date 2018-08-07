@@ -1,13 +1,11 @@
 ---
 layout: default
+title: Top page.
+js: index
 ---
-<div id="app_2" v-if="message.length > 0">message is \( message ).</div>
-<script>
-const app = new Vue({
-	delimiters: ['\\(', ')'],
-	el: '#app_2',
-	data: {
-		message: 'Hello Vue!',
-	},
-});
-</script>
+<section>
+<p>message is "\( message )".</p>
+<p>
+  <input type="text" :value="message" v-once @input="changeMessage">
+</p>
+</section>

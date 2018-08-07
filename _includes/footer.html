@@ -1,0 +1,9 @@
+<footer>
+	<p>&copy; \(create_year) Asuka</p>
+	<ul>
+		<li v-for="item in list">
+			<a :href="item.url" target="_blank" v-if="/^https?:\/\//.test(item.url)">\(item.title)</a>
+			<a :href="item.url" target="_top"  v-else>\(item.title)</a>
+		</li>
+	</ul>
+</footer>

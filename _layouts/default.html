@@ -1,12 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title></title>
+<title>{{ page.title }}</title>
 <script src="https://cdn.jsdelivr.net/npm/vue"></script>
-<script>
-</script>
+<script src="/js/init/default.js"></script>
+<script src="/js/{{ page.js }}.js"></script>
 </head>
 <body>
+{% include header.html %}
+<main>
 {{ content }}
+</main>
+{% include footer.html %}
 </body>
 </html>
