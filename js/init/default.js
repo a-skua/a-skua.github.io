@@ -1,3 +1,5 @@
+---
+---
 window.addEventListener('load', function() {
 	footer.$mount('footer');
 });
@@ -9,16 +11,17 @@ const footer = new Vue ({
 			list: [
 				{
 					title: 'About',
-					url: '#',
+					url: '{{site.url}}#',
 				}, {
 					title: 'Link',
-					url: '#',
+					url: '{{site.url}}#',
 				}, {
 					title: 'This repository',
 					url: 'https://github.com/19700101000000/19700101000000.github.io',
 				},
 			],
 			create_year: '2018',
+			site_url_reg: new RegExp('{{site.url}}'),
 		};
 	},
 	methods: {
