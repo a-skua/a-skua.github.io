@@ -1,9 +1,21 @@
 <footer>
 	<p>&copy; \(create_year) Asuka</p>
 	<ul>
+	{% for link in site.data.info.links %}
+		{% comment %}
+			サイト内リンクの場合は site.url をつける
+		{% endcomment %}
+		{% if link.self %}
+			<li><a href="{{site.url}}{{link.url}}" target="{{link.target}}">{{link.title}}</a></li>
+		{% else %}
+			<li><a href="{{link.url}}" target="{{link.target}}">{{link.title}}</a></li>
+		{% endif %}
+	{% endfor %}
+	<!-- use vue.js version
 		<li v-for="item in list">
 			<a :href="item.url" target="_top" v-if="site_url_reg.test(item.url)">\(item.title)</a>
 			<a :href="item.url" target="_blank"  v-else>\(item.title)</a>
 		</li>
+	-->
 	</ul>
 </footer>

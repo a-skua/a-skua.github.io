@@ -1,0 +1,16 @@
+links: # self: 自分のサイトかどうか
+  - 
+    title: 'About'
+    url: '#'
+    target: '_top'
+    self: true
+  - 
+    title: 'Link'
+    url: '#'
+    target: '_top'
+    self: true
+  - 
+    title: 'Repository'
+    url: 'https://github.com/19700101000000/19700101000000.github.io'
+    target: '_blank'
+    self: false
