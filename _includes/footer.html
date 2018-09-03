@@ -1,5 +1,11 @@
 <footer>
-	<p>&copy; \(create_year) Asuka</p>
+	<p>
+		{% assign update_year = site.time | date: '%Y' %}
+		&copy;
+		{{ site.data.info.create_year }}
+		{% if site.data.info.create_year != update_year  %}- {{ update_year }}{% endif %}
+		{{ site.data.info.author }}
+	</p>
 	<ul>
 	{% for link in site.data.info.links %}
 		{% comment %}
@@ -11,11 +17,11 @@
 			<li><a href="{{link.url}}" target="{{link.target}}">{{link.title}}</a></li>
 		{% endif %}
 	{% endfor %}
-	<!-- use vue.js version
+	{% comment %}
 		<li v-for="item in list">
 			<a :href="item.url" target="_top" v-if="site_url_reg.test(item.url)">\(item.title)</a>
 			<a :href="item.url" target="_blank"  v-else>\(item.title)</a>
 		</li>
-	-->
 	</ul>
+	{% endcomment %}
 </footer>
