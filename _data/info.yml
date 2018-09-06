@@ -7,12 +7,22 @@ create_year: '2018'
 links: 
   # self: 自分のサイトかどうか
   - 
+    title: 'Top'
+    url: ''
+    target: '_top'
+    self: true
+  - 
     title: 'About'
     url: '#'
     target: '_top'
     self: true
   - 
     title: 'Link'
+    url: '#'
+    target: '_top'
+    self: true
+  - 
+    title: 'Blog'
     url: '#'
     target: '_top'
     self: true
