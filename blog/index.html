@@ -4,4 +4,19 @@ title: Blog
 ---
 <section>
 <h1>Blog</h1>
+<ul>
+{% for category in site.categories %}
+	<li>{{ category[0] }}
+		<ul>
+		{% for posts in category %}
+			{% for post in posts %}
+				{% if post.title != nil %}
+					<li><a href="{{ post.url }}" target="_top">{{ post.title }}</a></li>
+				{% endif %}
+			{% endfor %}
+		{% endfor %}
+		</ul>
+	</li>
+{% endfor %}
+</ul>
 </section>

@@ -7,11 +7,11 @@ body {
 		margin: inherit;
 		padding: inherit;
 		background-color: #ddd;
-		h1 {
+		&>h1 {
 			margin: inherit;
 			padding: inherit;
 			display: inline-block;
-			a {
+			&>a {
 				display: block;
 				padding: 1em;
 				text-decoration: none;
@@ -28,12 +28,12 @@ body {
 	nav {
 		margin: inherit;
 		padding: inherit;
-		ul {
+		&>ul {
 			margin: inherit;
 			padding: 0.5em 0;
 			list-style-type: none;
 			text-align: center;
-			li {
+			&>li {
 				display: inline-block;
 				border-width: 0;
 				border-style: solid;
@@ -41,7 +41,7 @@ body {
 				&+li {
 					border-width: 0 0 0 2px;
 				}
-				a {
+				&>a {
 					display: block;
 					width: 100px;
 					color: #ccf;
@@ -52,6 +52,22 @@ body {
 					&:hover {
 						color: #00f;
 					}
+				}
+			}
+		}
+	}
+	footer {
+		text-align: center;
+		&>ul {
+			list-style-type: none;
+			&>li {
+				display: inline-block;
+				padding: 0 1em;
+				border-style: solid;
+				border-width: 0;
+				border-color: inherit;
+				&+li {
+					border-width: 0 0 0 1px;
 				}
 			}
 		}
