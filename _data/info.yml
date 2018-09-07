@@ -23,7 +23,7 @@ links:
     self: true
   - 
     title: 'Blog'
-    url: '#'
+    url: '/blog/'
     target: '_top'
     self: true
   - 
