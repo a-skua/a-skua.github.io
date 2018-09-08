@@ -3,20 +3,11 @@ layout: default
 title: Top
 ---
 <section>
-<p>message is "\( message )".</p>
-<p>
-  <input type="text" :value="message" v-once @input="changeMessage">
-</p>
-</section>
-
-<section>
-<p>Post list.</p>
-<ul>
-{% for post in site.posts %}
-	<li>
-		<a href="{{ post.url }}">{{ post.title }}</a>
-		{{ post.excerpt }}
-	</li>
+<h1>Log</h1>
+<dl>
+{% for log in site.data.logs %}
+	<dt>{{ log.date }}</dt>
+	<dd>{{ log.content }}</dd>
 {% endfor %}
-</ul>
+</dl>
 </section>

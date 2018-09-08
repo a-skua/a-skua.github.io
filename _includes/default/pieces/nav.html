@@ -1,5 +1,5 @@
 <ul>
-{% for link in site.data.info.links %}
+{% for link in site.data.info.nav %}
 	{% if link.self %}
 		<li><a href="{{site.url}}{{link.url}}" target="{{link.target}}">{{link.title}}</a></li>
 	{% else %}
