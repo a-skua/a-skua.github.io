@@ -4,6 +4,24 @@ title: Blog
 ---
 <article>
 <h1>Blog</h1>
+{% for post in paginator.posts %}
+<section>
+{{ post.content }}
+</section>
+{% endfor %}
+<section>
+{% if paginator.next_page %}
+	<p><a href="{{ site.url }}/blog/page{{ paginator.next_page }}/">next</a></p>
+{% endif %}
+{% if paginator.previous_page %}
+	{% if paginator.previous_page == 1 %}
+		<p><a href="{{ site.url }}/blog/">previous</a></p>
+	{% else %}
+		<p><a href="{{ site.url }}/blog/page{{ paginator.previous_page }}/">previous</a></p>
+	{% endif %}
+{% endif %}
+<p>{{ paginator.page }}/{{ paginator.total_pages }}</p>
+</section>
 <section>
 <h1>Categories</h1>
 <ul>

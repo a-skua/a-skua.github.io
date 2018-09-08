@@ -1,13 +1,18 @@
-<!DOCTYPE html>
-<html>
-<head>
-<title>{{ page.title }}</title>
-<script src="https://cdn.jsdelivr.net/npm/vue"></script>
-<script src="{{ site.url }}/js/init/default.js"></script>
-</head>
-<body>
-<main>
-{{ content }}
-</main>
-</body>
-</html>
+---
+layout: default
+---
+<article>
+<h1>{{ page.title }}</h1>
+<section>
+{{ page.content }}
+</section>
+<section>
+{% if page.next %}
+<p><a href="{{ site.url }}{{ page.next.url }}">&lt;&lt;{{ page.next.title }}</a></p>
+{% endif %}
+<p>{{ page.date | date: '%Y-%m-%d' }}</p>
+{% if page.previous %}
+<p><a href="{{ site.url }}{{ page.previous.url }}">{{ page.previous.title }}&gt;&gt;</a></p>
+{% endif %}
+</section>
+</article>
