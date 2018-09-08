@@ -2,8 +2,10 @@
 layout: default
 title: Blog
 ---
-<section>
+<article>
 <h1>Blog</h1>
+<section>
+<h1>Categories</h1>
 <ul>
 {% for category in site.categories %}
 {% assign category_name = category | first %}
@@ -17,3 +19,4 @@ title: Blog
 {% endfor %}
 </ul>
 </section>
+</article>

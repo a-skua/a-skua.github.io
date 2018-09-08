@@ -3,10 +3,23 @@
 body {
 	margin: 0;
 	padding: 0;
+	position: relative;
+	background-color: #111;
+	color: #eee;
+	font-size: 100%;
+	font-family: serif;
+	a {
+		color: inherit;
+		&:visited {
+			color: inherit;
+		}
+		&:hover {
+			color: #b81919;
+		}
+	}
 	header {
 		margin: inherit;
 		padding: inherit;
-		background-color: #ddd;
 		&>h1 {
 			margin: inherit;
 			padding: inherit;
@@ -15,12 +28,9 @@ body {
 				display: block;
 				padding: 1em;
 				text-decoration: none;
-				color: #999;
-				&:hover {
-					background-color: #fcc;
-				}
 				&:visited {
-					color: 999;
+				}
+				&:hover {
 				}
 			}
 		}
@@ -39,24 +49,64 @@ body {
 				border-style: solid;
 				border-color: #ccc;
 				&+li {
-					border-width: 0 0 0 2px;
+					border-width: 0 0 0 1px;
 				}
 				&>a {
 					display: block;
 					width: 100px;
 					color: #ccf;
-					text-decoration: none;
 					&:visited {
-						color: #ccf;
 					}
 					&:hover {
-						color: #00f;
 					}
 				}
 			}
 		}
 	}
+	main {
+		margin: inherit;
+		padding: inherit;
+		position: inherit;
+		&>article {
+			margin: inherit;
+			padding: 0.5em;
+			position: inherit;
+			&>h1 {
+				margin: inherit;
+				padding: inherit;
+				position: inherit;
+				border-style: solid;
+				border-width: 1px;
+				border-color: inherit;
+			}
+			&>section {
+				margin: 0.5em 0;
+				padding: 0;
+				border-style: solid;
+				border-width: 1px;
+				border-color: inherit;
+				&>h1 {
+					margin: 0;
+					padding: 0.5em;
+					border-style: dotted;
+					border-width: 0 0 1px 0;
+					border-color: inherit;
+				}
+				&>ul,
+				&>ol,
+				&>dl,
+				&>p {
+					margin: 0;
+					padding: 0.5em;
+					list-style-type: none;
+				}
+			}
+		}
+
+	}
 	footer {
+		margin: inherit;
+		padding: inherit;
 		text-align: center;
 		&>ul {
 			list-style-type: none;
