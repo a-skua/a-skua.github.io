@@ -1,0 +1,20 @@
+info: '個人的によく使用するサイトリンク集'
+links:
+  - 
+    category: 'web'
+    outer:
+      - 
+        title: 'jekyll'
+        url: 'https://jekyllrb.com/' 
+      - 
+        title: 'jekyll - 日本語'
+        url: 'https://jekyllrb-ja.github.io/'
+      - 
+        title: 'Liquid'
+        url: 'https://shopify.github.io/liquid/'
+  - 
+    category: 'serve'
+    outer:
+      - 
+        title: 'golang'
+        url: 'https://golang.org/'

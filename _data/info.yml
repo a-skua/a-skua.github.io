@@ -13,12 +13,12 @@ nav:
     self: true
   - 
     title: 'Link'
-    url: '#'
+    url: '/link'
     target: '_top'
     self: true
   - 
     title: 'Blog'
-    url: '/blog/'
+    url: '/blog'
     target: '_top'
     self: true
   - 
