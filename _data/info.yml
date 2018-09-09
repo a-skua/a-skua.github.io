@@ -12,11 +12,6 @@ nav:
     target: '_top'
     self: true
   - 
-    title: 'About'
-    url: '#'
-    target: '_top'
-    self: true
-  - 
     title: 'Link'
     url: '#'
     target: '_top'
