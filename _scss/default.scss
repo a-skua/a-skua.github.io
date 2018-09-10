@@ -1,0 +1,7 @@
+@mixin border_color {
+	border-color: #666;
+}
+@mixin border-solid {
+	@include border_color;
+	border-style: solid;
+}

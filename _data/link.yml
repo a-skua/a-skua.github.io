@@ -1,7 +1,7 @@
 info: '個人的によく使用するサイトリンク集'
 links:
   - 
-    category: 'web'
+    category: 'front end'
     outer:
       - 
         title: 'jekyll'
@@ -13,8 +13,20 @@ links:
         title: 'Liquid'
         url: 'https://shopify.github.io/liquid/'
   - 
-    category: 'serve'
+    category: 'back end'
     outer:
       - 
         title: 'golang'
         url: 'https://golang.org/'
+      - 
+        title: 'GoDoc'
+        url: 'https://godoc.org/'
+  - 
+    category: 'infrastructure'
+    outer:
+      - 
+        title: 'Docker'
+        url: 'https://www.docker.com/'
+      - 
+        title: 'Docker docs'
+        url: 'https://docs.docker.com/'
