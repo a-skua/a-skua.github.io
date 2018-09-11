@@ -5,15 +5,14 @@ title: Blog
 <article>
 <h1>Blog</h1>
 {% for post in paginator.posts %}
-	<section>
-	<h1>{{ post.title }}</h1>
-	<p>{{ post.excerpt | strip_html | truncate: 32 }}</p>
-	<p>
-		{{ post.date | date: "%Y-%m-%d" }}
-		<a href="{{ site.url }}{{ post.url }}" target="_top">more</a>
-	</p>
+	<section class="blog_piece">
+		<h1>{{ post.title }}</h1>
+		<p>{{ post.date | date: "%Y-%m-%d" }}</p>
+		<p>{{ post.content | strip_html | truncate: 128 }}</p>
+		<p><a class="goto_blog" href="{{ site.url }}{{ post.url }}" target="_top">more</a></p>
 	</section>
 {% endfor %}
+
 <section>
 {% if paginator.next_page %}
 	<p><a href="{{ site.url }}/blog/page{{ paginator.next_page }}/">next</a></p>
