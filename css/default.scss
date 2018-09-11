@@ -98,6 +98,35 @@ body {
 					padding: 0.5em;
 					list-style-type: none;
 				}
+				&>figure.highlight {
+					margin: 0.5em;
+					padding: 0.5em;
+					@include border_solid;
+					border-width: 1px;
+					pre {
+						margin: 0;
+						padding: 0;
+					}
+					.lineno {
+						color: #356545;
+					}
+					.k {
+						color: #f4f450;
+					}
+					.n {}
+					.p {
+						font-weight: bold;
+						color: #18b2b2;
+					}
+					.o {}
+					.x {}
+					.s {
+						color: #dc48dc;
+					}
+					.c {
+						color: #666;
+					}
+				}
 			}
 		}
 
