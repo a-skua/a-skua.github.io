@@ -1,7 +1,7 @@
 ---
 layout: post
 categories:
-  - Golang
+  - golang
 ---
 # Go言語における変数入れ替え
 
