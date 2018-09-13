@@ -6,10 +6,11 @@ title: Blog
 <h1>Blog</h1>
 {% for post in paginator.posts %}
 	<section class="blog_piece">
-		<h1>{{ post.title }}</h1>
-		<p>{{ post.date | date: "%Y-%m-%d" }}</p>
-		<p>{{ post.content | strip_html | truncate: 128 }}</p>
-		<p><a class="goto_blog" href="{{ site.url }}{{ post.url }}" target="_top">more</a></p>
+		<a class="goto_blog" href="{{ site.url }}{{ post.url }}" target="_top">
+			<h1>{{ post.title }}</h1>
+			<p>{{ post.date | date: "%Y-%m-%d" }}</p>
+			<p>{{ post.content | strip_html | truncate: 128 }}</p>
+		</a>
 	</section>
 {% endfor %}
 
