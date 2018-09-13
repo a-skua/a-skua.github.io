@@ -86,7 +86,7 @@ body {
 				&>h1, &.blog_piece>a>h1 {
 					margin: 0;
 					padding: 0.5em;
-					border-width: 0 0 0 1px;
+					border-width: 0 0 1px;
 					@include border_solid;
 				}
 				&>ul, &.blog_piece>a>ul,
