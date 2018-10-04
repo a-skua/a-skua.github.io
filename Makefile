@@ -17,16 +17,16 @@ testfile:
 	echo 'category: test' >> ${TESTFILE1}
 	echo '---' >> ${TESTFILE1}
 	echo '# TEST' >> ${TESTFILE1}
-	echo 'test<br>' >> ${TESTFILE1}
-	echo 'test<br>' >> ${TESTFILE1}
-	echo 'test<br>' >> ${TESTFILE1}
-	echo 'test<br>' >> ${TESTFILE1}
-	echo 'test<br>' >> ${TESTFILE1}
-	echo 'test<br>' >> ${TESTFILE1}
-	echo 'test<br>' >> ${TESTFILE1}
-	echo 'test<br>' >> ${TESTFILE1}
-	echo 'test<br>' >> ${TESTFILE1}
-	echo 'test<br>' >> ${TESTFILE1}
+	echo 'test  ' >> ${TESTFILE1}
+	echo 'test  ' >> ${TESTFILE1}
+	echo 'test  ' >> ${TESTFILE1}
+	echo 'test  ' >> ${TESTFILE1}
+	echo 'test  ' >> ${TESTFILE1}
+	echo 'test  ' >> ${TESTFILE1}
+	echo 'test  ' >> ${TESTFILE1}
+	echo 'test  ' >> ${TESTFILE1}
+	echo 'test  ' >> ${TESTFILE1}
+	echo 'test  ' >> ${TESTFILE1}
 	cp ${TESTFILE1} ${TESTFILE2}
 	cp ${TESTFILE1} ${TESTFILE3}
 	cp ${TESTFILE1} ${TESTFILE4}
