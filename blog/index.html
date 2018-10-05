@@ -1,16 +1,16 @@
 ---
-layout: default
+layout: blog
 title: Blog
 ---
 <article>
 <h1>Blog</h1>
 {% for post in paginator.posts %}
-	<section class="blog_piece">
-		<a class="goto_blog" href="{{ site.url }}{{ post.url }}" target="_top">
-			<h1>{{ post.title }}</h1>
-			<p>{{ post.content | strip_html | truncate: 128 }}</p>
-			<p>{{ post.date | date: "%Y-%m-%d" }}</p>
-		</a>
+	<section class="blog_item">
+	<a class="goto_blog" href="{{ site.url }}{{ post.url }}" target="_top">
+	<h1>{{ post.title }}</h1>
+	<p>{{ post.content | strip_html | truncate: 192 }}</p>
+	<p>{{ post.date | date: "%Y/%m/%d" }}</p>
+	</a>
 	</section>
 {% endfor %}
 

@@ -1,5 +1,5 @@
 permalink: /blog/:categories/:year/:month/:day/:title/
-paginate: 5
+paginate: 8
 paginate_path: "/blog/page:num"
 plugins: [jekyll-paginate]
 sass:
