@@ -1,0 +1,7 @@
+---
+---
+@import 'base.scss';
+@import 'pieces/paginator.scss';
+
+@include base;
+@include paginator;

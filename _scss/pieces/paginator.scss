@@ -1,0 +1,16 @@
+@mixin paginator {
+	.paginator {
+		display: flex;
+		flex-direction: row;
+		&>p {
+			flex: auto;
+			text-align: left;
+		}
+		p+p {
+			text-align: center;
+		}
+		p+p+p {
+			text-align: right;
+		}
+	}
+}

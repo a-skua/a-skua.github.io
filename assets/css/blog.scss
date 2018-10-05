@@ -1,7 +1,10 @@
 ---
 ---
 @import 'base.scss';
+@import 'pieces/paginator.scss';
+
 @include base;
+@include paginator;
 
 .blog_item {
 	padding: 0 0 0 8px;

@@ -14,19 +14,24 @@ title: Blog
 	</section>
 {% endfor %}
 
-<section>
+<section class="paginator">
+<p>
 {% if paginator.next_page %}
-	<p><a href="{{ site.url }}/blog/page{{ paginator.next_page }}/">next</a></p>
+	<a href="{{ site.url }}/blog/page{{ paginator.next_page }}/">&lt;&lt; OLD</a>
 {% endif %}
-{% if paginator.previous_page %}
-	{% if paginator.previous_page == 1 %}
-		<p><a href="{{ site.url }}/blog/">previous</a></p>
-	{% else %}
-		<p><a href="{{ site.url }}/blog/page{{ paginator.previous_page }}/">previous</a></p>
-	{% endif %}
-{% endif %}
+</p>
+
 <p>{{ paginator.page }}/{{ paginator.total_pages }}</p>
+
+<p>
+{% if paginator.previous_page %}{% if paginator.previous_page == 1 %}
+	<a href="{{ site.url }}/blog/">NEW &gt;&gt;</a>
+{% else %}
+	<a href="{{ site.url }}/blog/page{{ paginator.previous_page }}/">NEW &gt;&gt;</a>
+{% endif %}{% endif %}
+</p>
 </section>
+
 <section>
 <h1>Categories</h1>
 <ul>
