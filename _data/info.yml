@@ -5,24 +5,12 @@ author: 'Asuka'
 create_year: '2018'
 
 nav: 
-  # self: 自分のサイトかどうか
   - 
     title: 'Top'
-    url: ''
-    target: '_top'
-    self: true
+    url: '/'
   - 
     title: 'Link'
     url: '/link'
-    target: '_top'
-    self: true
   - 
     title: 'Blog'
     url: '/blog'
-    target: '_top'
-    self: true
-  - 
-    title: 'Repository'
-    url: 'https://github.com/19700101000000/19700101000000.github.io'
-    target: '_blank'
-    self: false

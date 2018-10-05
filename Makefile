@@ -14,9 +14,9 @@ up:
 testfile:
 	echo '---' >> ${TESTFILE1}
 	echo 'layout: post' >> ${TESTFILE1}
+	echo 'title: "This Is Test Article."' >> ${TESTFILE1}
 	echo 'category: test' >> ${TESTFILE1}
 	echo '---' >> ${TESTFILE1}
-	echo '# TEST' >> ${TESTFILE1}
 	echo 'test  ' >> ${TESTFILE1}
 	echo 'test  ' >> ${TESTFILE1}
 	echo 'test  ' >> ${TESTFILE1}

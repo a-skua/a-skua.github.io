@@ -1,9 +1,5 @@
 <ul>
 {% for link in site.data.info.nav %}
-	{% if link.self %}
-		<li><a href="{{site.url}}{{link.url}}" target="{{link.target}}">{{link.title}}</a></li>
-	{% else %}
-		<li><a href="{{link.url}}" target="{{link.target}}">{{link.title}}</a></li>
-	{% endif %}
+	<li><a href="{{ site.url }}{{ link.url }}" target="_top">{{link.title}}</a></li>
 {% endfor %}
 </ul>
