@@ -1,9 +1,9 @@
 @mixin paginator {
 	.paginator {
 		display: flex;
-		flex-direction: row;
 		&>p {
-			flex: auto;
+			width: 0; /* これ大事 */
+			flex-grow: 1;
 			text-align: left;
 		}
 		p+p {
