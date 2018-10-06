@@ -7,3 +7,20 @@
 @include base;
 @include paginator;
 @include syntax_highlight;
+
+blockquote {
+	padding: 0 0 0 0.5em;
+	@include border-solid;
+	border-width: 0 0 0 4px;
+	&>p {
+		margin: 0;
+		padding: 0;
+	}
+}
+code.highlighter-rouge {
+	color: #d72b3f;
+	@include border-solid;
+	border-width: 1px;
+	border-radius: 0.2em/0.2em;
+	background-color: #333;
+}
