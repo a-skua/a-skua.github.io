@@ -1,7 +1,9 @@
 ---
 ---
 @import 'base.scss';
-@import 'pieces/paginator.scss';
+@import 'paginator.scss';
+@import 'syntax_highlight';
 
 @include base;
 @include paginator;
+@include syntax_highlight;
