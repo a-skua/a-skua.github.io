@@ -5,9 +5,12 @@ javascript: default
 ---
 <article>
 <h1>Article</h1>
-<section>
+
+<section class="article">
 <h1>{{ page.title }}</h1>
 {{ page.content }}
+
+<p>{{ page.date | date: '%Y/%m/%d' }}</p>
 </section>
 
 <section>
@@ -20,8 +23,6 @@ javascript: default
 	<a href="{{ site.url }}{{ page.next.url }}">&lt;&lt; {{ page.next.title }}</a>
 {% endif %}
 </p>
-
-<p>{{ page.date | date: '%Y/%m/%d' }}</p>
 
 <p>
 {% if page.previous %}

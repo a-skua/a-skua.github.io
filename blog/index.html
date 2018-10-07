@@ -16,19 +16,20 @@ title: Blog
 
 <section class="paginator">
 <p>
-{% if paginator.next_page %}
-	<a href="{{ site.url }}/blog/page{{ paginator.next_page }}/">&lt;&lt; OLD</a>
-{% endif %}
+{% assign previous = "&lt;&lt; PREVIOUS" %}
+{% if paginator.previous_page %}{% if paginator.previous_page == 1 %}
+	<a href="{{ site.url }}/blog/">{{ previous }}</a>
+{% else %}
+	<a href="{{ site.url }}/blog/page{{ paginator.previous_page }}/">{{ previous }}</a>
+{% endif %}{% endif %}
 </p>
 
 <p>{{ paginator.page }}/{{ paginator.total_pages }}</p>
 
 <p>
-{% if paginator.previous_page %}{% if paginator.previous_page == 1 %}
-	<a href="{{ site.url }}/blog/">NEW &gt;&gt;</a>
-{% else %}
-	<a href="{{ site.url }}/blog/page{{ paginator.previous_page }}/">NEW &gt;&gt;</a>
-{% endif %}{% endif %}
+{% if paginator.next_page %}
+	<a href="{{ site.url }}/blog/page{{ paginator.next_page }}/">NEXT &gt;&gt;</a>
+{% endif %}
 </p>
 </section>
 

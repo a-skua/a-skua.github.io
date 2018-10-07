@@ -4,12 +4,12 @@
 		&>p {
 			width: 0; /* これ大事 */
 			flex-grow: 1;
-			text-align: left;
-		}
-		p+p {
 			text-align: center;
 		}
-		p+p+p {
+		&>p:first-child {
+			text-align: left;
+		}
+		&>p:last-child {
 			text-align: right;
 		}
 	}
