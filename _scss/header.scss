@@ -1,7 +1,5 @@
 @mixin header {
 	header {
-		margin: inherit;
-		padding: inherit;
 		&>h1 {
 			margin: inherit;
 			padding: inherit;

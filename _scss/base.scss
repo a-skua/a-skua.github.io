@@ -1,56 +1,16 @@
+@import 'init.scss';
 @import 'pieces/border.scss';
 @import 'header.scss';
+@import 'nav.scss';
+@import 'footer.scss';
+
 @mixin base {
+	@include init;
+	@include header;
+	@include nav;
+	@include footer;
 	body {
-		margin: 0;
-		padding: 0;
-		position: relative;
-		background-color: #111;
-		color: #eee;
-		font-size: 100%;
-		font-family: serif;
-		a {
-			color: inherit;
-			&:visited {
-				color: inherit;
-			}
-			&:hover {
-				color: #b81919;
-			}
-			&:active {
-				color: #333;
-			}
-		}
-		img {
-			width: 100%;
-		}
-		@include header;
-		nav {
-			margin: inherit;
-			padding: inherit;
-			&>ul {
-				margin: inherit;
-				padding: 0.5em 0;
-				list-style-type: none;
-				text-align: center;
-				&>li {
-					display: inline-block;
-					border-width: 0;
-					@include border_solid;
-					&+li {
-						border-width: 0 0 0 1px;
-					}
-					&>a {
-						display: block;
-						width: 100px;
-					}
-				}
-			}
-		}
 		main {
-			margin: inherit;
-			padding: inherit;
-			position: inherit;
 			&>article {
 				margin: inherit;
 				padding: 0.5em;
@@ -86,23 +46,6 @@
 				}
 			}
 
-		}
-		footer {
-			margin: inherit;
-			padding: inherit;
-			text-align: center;
-			&>ul {
-				list-style-type: none;
-				&>li {
-					display: inline-block;
-					padding: 0 1em;
-					@include border-solid;
-					border-width: 0;
-					&+li {
-						border-width: 0 0 0 1px;
-					}
-				}
-			}
 		}
 
 	}

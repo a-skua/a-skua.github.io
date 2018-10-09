@@ -1,0 +1,19 @@
+@import 'pieces/border.scss';
+
+@mixin footer {
+	footer {
+		text-align: center;
+		&>ul {
+			list-style-type: none;
+			&>li {
+				display: inline-block;
+				padding: 0 1em;
+				@include border-solid;
+				border-width: 0;
+				&+li {
+					border-width: 0 0 0 1px;
+				}
+			}
+		}
+	}
+}
