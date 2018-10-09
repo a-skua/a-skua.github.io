@@ -1,4 +1,5 @@
 @import 'pieces/border.scss';
+@import 'header.scss';
 @mixin base {
 	body {
 		margin: 0;
@@ -23,24 +24,7 @@
 		img {
 			width: 100%;
 		}
-		header {
-			margin: inherit;
-			padding: inherit;
-			&>h1 {
-				margin: inherit;
-				padding: inherit;
-				display: inline-block;
-				&>a {
-					display: block;
-					padding: 1em;
-					text-decoration: none;
-					&:visited {
-					}
-					&:hover {
-					}
-				}
-			}
-		}
+		@include header;
 		nav {
 			margin: inherit;
 			padding: inherit;

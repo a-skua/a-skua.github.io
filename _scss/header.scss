@@ -1,0 +1,15 @@
+@mixin header {
+	header {
+		margin: inherit;
+		padding: inherit;
+		&>h1 {
+			margin: inherit;
+			padding: inherit;
+			&>a {
+				display: block;
+				padding: 1em;
+				text-decoration: none;
+			}
+		}
+	}
+}
