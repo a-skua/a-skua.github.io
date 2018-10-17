@@ -5,10 +5,7 @@
 <head>
 <title>{{ page.title }} | {{ site.data.info.title }}</title>
 <link rel="stylesheet" href="{{ site.url }}/assets/css/{{ layout.stylesheet }}.css">
-<!-- Do not using now.
 <script src="https://cdn.jsdelivr.net/npm/vue"></script>
-<script src="{{ site.url }}/assets/js/{{ layout.javascript }}.js"></script>
--->
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-127256499-1"></script>
 <script>
@@ -26,5 +23,6 @@
 {{ content }}
 </main>
 {% include default/footer.html %}
+<script async src="{{ site.url }}/assets/js/{{ layout.javascript }}.js"></script>
 </body>
 </html>

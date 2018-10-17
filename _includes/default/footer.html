@@ -1,4 +1,5 @@
 <footer>
+	{% include default/pieces/nav.html %}
 	<p>
 		{% assign update_year = site.time | date: '%Y' %}
 		&copy;
@@ -6,6 +7,5 @@
 		{% if site.data.info.create_year != update_year  %}- {{ update_year }}{% endif %}
 		{{ site.data.info.author }}
 	</p>
-
-	{% include default/pieces/nav.html %}
+	<div id="samurai-banner"></div>
 </footer>
