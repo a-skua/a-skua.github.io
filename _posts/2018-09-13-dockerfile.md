@@ -14,7 +14,7 @@ Goの実行環境を作ったりしてみたのですが、
 Dockerfileをbuildするときにソースファイルを読みこんでいました。
 こんな感じに…
 
-{% highlight plaintext linenos %}
+{% highlight dockerfile linenos %}
 FROM golang
 
 WORKDIR /go/src/hello
@@ -28,7 +28,7 @@ CMD go build && ./hello
 探したところ、docker-compose の volumes を利用すると上手くいきそう…
 そういうわけで実装してみました。
 
-{% highlight plaintext linenos %}
+{% highlight dockerfile linenos %}
 FROM golang
 MAINTAINER asuka
 
