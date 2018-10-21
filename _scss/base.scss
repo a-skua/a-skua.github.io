@@ -21,6 +21,7 @@
 					position: inherit;
 					border-width: 0 0 1px;
 					@include border_solid;
+					color: #666;
 				}
 				&>section {
 					margin: 0.5em 0 0;
