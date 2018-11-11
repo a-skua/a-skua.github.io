@@ -1,12 +1,6 @@
 TESTFILE1 = _posts/1970-01-01-test.md
-TESTFILE2 = _posts/1970-01-02-test.md
-TESTFILE3 = _posts/1970-01-03-test.md
-TESTFILE4 = _posts/1970-01-04-test.md
-TESTFILE5 = _posts/1970-01-05-test.md
-TESTFILE6 = _posts/1970-01-06-test.md
-TESTFILE7 = _posts/1970-01-07-test.md
-TESTFILE8 = _posts/1970-01-08-test.md
-TESTFILE9 = _posts/1970-01-09-test.md
+BEFORE_TESTFILE = _posts/1970-01-0
+AFTER_TESTFILE = -test.md
 
 up:
 	jekyll serve
@@ -17,32 +11,17 @@ testfile:
 	echo 'title: "This Is Test Article."' >> ${TESTFILE1}
 	echo 'category: test' >> ${TESTFILE1}
 	echo '---' >> ${TESTFILE1}
-	echo 'test  ' >> ${TESTFILE1}
-	echo 'test  ' >> ${TESTFILE1}
-	echo 'test  ' >> ${TESTFILE1}
-	echo 'test  ' >> ${TESTFILE1}
-	echo 'test  ' >> ${TESTFILE1}
-	echo 'test  ' >> ${TESTFILE1}
-	echo 'test  ' >> ${TESTFILE1}
-	echo 'test  ' >> ${TESTFILE1}
-	echo 'test  ' >> ${TESTFILE1}
-	echo 'test  ' >> ${TESTFILE1}
-	cp ${TESTFILE1} ${TESTFILE2}
-	cp ${TESTFILE1} ${TESTFILE3}
-	cp ${TESTFILE1} ${TESTFILE4}
-	cp ${TESTFILE1} ${TESTFILE5}
-	cp ${TESTFILE1} ${TESTFILE6}
-	cp ${TESTFILE1} ${TESTFILE7}
-	cp ${TESTFILE1} ${TESTFILE8}
-	cp ${TESTFILE1} ${TESTFILE9}
+	for i in 0 1 2 3 4 5 6 7 8 9;\
+		do\
+		echo 'test  ' >> ${TESTFILE1};\
+		done
+	for i in 2 3 4 5 6 7 8 9;\
+		do\
+		cp ${TESTFILE1} ${BEFORE_TESTFILE}$$i${AFTER_TESTFILE};\
+		done
 rmtestfile:
-	rm ${TESTFILE1}
-	rm ${TESTFILE2}
-	rm ${TESTFILE3}
-	rm ${TESTFILE4}
-	rm ${TESTFILE5}
-	rm ${TESTFILE6}
-	rm ${TESTFILE7}
-	rm ${TESTFILE8}
-	rm ${TESTFILE9}
+	for i in 1 2 3 4 5 6 7 8 9;\
+		do\
+		rm ${BEFORE_TESTFILE}$$i${AFTER_TESTFILE};\
+		done
 retestfile: rmtestfile testfile
