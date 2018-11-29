@@ -17,10 +17,7 @@ grow_grass = new Vue {
               gridColumn: getGridColumn(i),
               gridRow: getGridRow(i)
             }]">
-            <template v-if="dates[getDateColumn(i)]">
-              <template v-if="dates[getDateColumn(i)][getDateRow(i)]">
-                $ dates[getDateColumn(i)][getDateRow(i)] $
-            </template>
+            <template v-if="dates[getDateColumn(i)] && dates[getDateColumn(i)][getDateRow(i)]">0</template>
           </div>
           <div
             v-else
@@ -45,6 +42,7 @@ grow_grass = new Vue {
     start_date: ''
     end_date: ''
     dates: []
+    posts: {}
     style:
       wrapper:
         display: 'grid'
@@ -52,7 +50,7 @@ grow_grass = new Vue {
         gridAutoColumns: 'minmax(1em, 1em)'
         gridAutoRows: 'minmax(1em, 1em)'
       item:
-        backgroundColor: 'green'
+        backgroundColor: 'gray'
       week:
         fontSize: '1em'
         textAlign: 'right'
@@ -69,7 +67,7 @@ grow_grass = new Vue {
     getDateDiff: () ->
       start_date = this.getStartDate()
       end_date = this.getEndDate()
-      date_diff = (end_date - start_date) / 24 / 60 / 60 / 1000
+      date_diff = (end_date - start_date) / 24 / 60 / 60 / 1000 + 7
 
       this.start_date = start_date
       this.end_date = end_date
@@ -93,14 +91,29 @@ grow_grass = new Vue {
       date.setSeconds 0
       date.setMilliseconds 0
       date
+    getJSON: () ->
+      self = this
+      xhr = new XMLHttpRequest()
+      xhr.open 'GET', '{{ site.url }}/assets/json/posts_date.json', true
+      xhr.onload = () ->
+        if xhr.readyState == xhr.DONE
+          if xhr.status == 200
+            data = JSON.parse xhr.response
+            for row in self.dates
+              for col in row
+                if data[col]
+                  alert data[col]
+      xhr.send null
+      return
     setDates: () ->
-      start_date = new Date(this.start_date)
-      end_date = new Date(this.end_date)
+      start_date = new Date this.start_date
+      end_date = new Date this.end_date
       rows = 0
       while start_date.getTime() != end_date.getTime()
         week = []
         for i in [0...7]
-          week[i] = new Date start_date
+          d = new Date start_date
+          week[i] = d.getFullYear() + '-' + ('0' + (d.getMonth() + 1)).slice(-2) + '-' + ('0' + d.getDate()).slice -2
           start_date.setDate start_date.getDate() + 1
           if start_date.getTime() == end_date.getTime()
             break
@@ -111,5 +124,6 @@ grow_grass = new Vue {
   mounted: () ->
     this.date_diff = this.getDateDiff()
     this.setDates()
+    this.getJSON()
     return
 }
