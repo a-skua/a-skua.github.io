@@ -97,7 +97,7 @@ grow_grass = new Vue {
     getStartDate: () ->
       date = new Date()
       date.setFullYear date.getFullYear() - 1
-      date.setMonth if date.getMonth() == 11 then 0 else date.getMonth() + 1
+      date.setMonth date.getMonth() + 1
       # date.setDate 1
       date.setDate date.getDate() - date.getDay()
       date.setHours 0
