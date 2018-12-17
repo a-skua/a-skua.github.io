@@ -8,19 +8,22 @@ grow_grass = new Vue {
   el: '#grow-grass'
   template: '''
     <div>
-      <p>$ count $</p>
+      <p v-if="count === 0">No articles</p>
+      <p v-else-if="count === 1">$ count $ article</p>
+      <p v-else>$ count $ articles</p>
       <div :style="style.wrapper">
         <template v-for="(v, k, i) in dates">
           <div
-            :style="[bgColor(v.grass), {
+            :style="[bgColor(v.articles.length), style.column, {
               gridColumn: getGridColumn(i),
               gridRow: getGridRow(i)
-            }]">
+            }]"
+            @click="onClickColumn(k, v, $event)">
           </div>
           <div
             v-if="v.month"
             :style="{
-              gridColumn: getGridColumn(i),
+              gridColumn: getGridColumn(i - 7),
               gridRow: '1',
             }">
             $ v.month $
@@ -31,15 +34,23 @@ grow_grass = new Vue {
               gridColumn: '1 / 4',
               gridRow: getGridRow(i)
             }]">
-            <template v-if="i === 1">mon</template>
-            <template v-if="i === 3">wed</template>
-            <template v-if="i === 5">fri</template>
+            $ weeks[i] $
           </div>
         </template>
+      </div>
+
+      <div>
+        <p>$ info.date $</p>
+        <ul>
+          <li v-for="article in info.articles"><a :href="article.url">$ article.title $</a></li>
+        </ul>
       </div>
     </div>
   '''
   data:
+    info:
+      date: ''
+      articles: []
     count: 0
     rows_num: 8
     first_row_end: 2
@@ -49,25 +60,47 @@ grow_grass = new Vue {
     end_date: ''
     dates: {}
     posts: {}
+    weeks: [
+      '{{ site.data.grow-grass.week.sun }}'
+      '{{ site.data.grow-grass.week.mon }}'
+      '{{ site.data.grow-grass.week.tue }}'
+      '{{ site.data.grow-grass.week.wed }}'
+      '{{ site.data.grow-grass.week.thu }}'
+      '{{ site.data.grow-grass.week.fri }}'
+      '{{ site.data.grow-grass.week.sat }}'
+    ]
     style:
       wrapper:
         display: 'grid'
         gridGap: '2px'
         gridAutoColumns: 'minmax(1em, 1em)'
         gridAutoRows: 'minmax(1em, 1em)'
+        overflow: 'auto'
+      column:
+        cursor: 'pointer'
       item:
         less:
-          backgroundColor: 'gray'
+          backgroundColor: '{{ site.data.grow-grass.less }}'
         one:
-          backgroundColor: 'green'
+          backgroundColor: '{{ site.data.grow-grass.one }}'
         two:
-          backgroundColor: 'green'
+          backgroundColor: '{{ site.data.grow-grass.two }}'
         more:
-          backgroundColor: 'green'
+          backgroundColor: '{{ site.data.grow-grass.more }}'
       week:
         fontSize: '1em'
         textAlign: 'right'
   methods:
+    onClickColumn: (date, values, event) ->
+      rect = event.target.getBoundingClientRect()
+
+      console.log date
+      console.log values
+      console.log rect.x
+      console.log rect.y
+      this.info.date = date
+      this.info.articles = values.articles
+      return
     bgColor: (num) ->
       switch num
         when 0
@@ -97,7 +130,6 @@ grow_grass = new Vue {
     getStartDate: () ->
       date = new Date()
       date.setFullYear date.getFullYear() - 1
-      date.setMonth date.getMonth() + 1
       # date.setDate 1
       date.setDate date.getDate() - date.getDay()
       date.setHours 0
@@ -114,31 +146,31 @@ grow_grass = new Vue {
       date.setMilliseconds 0
       date
     getMonth: (num) ->
-      switch num
+      switch num % 12
+        when 0
+          '{{ site.data.grow-grass.month.jan }}'
         when 1
-          'Feb'
+          '{{ site.data.grow-grass.month.feb }}'
         when 2
-          'Mar'
+          '{{ site.data.grow-grass.month.mar }}'
         when 3
-          'Apr'
+          '{{ site.data.grow-grass.month.apr }}'
         when 4
-          'May'
+          '{{ site.data.grow-grass.month.may }}'
         when 5
-          'Jun'
+          '{{ site.data.grow-grass.month.jun }}'
         when 6
-          'Jul'
+          '{{ site.data.grow-grass.month.jul }}'
         when 7
-          'Aug'
+          '{{ site.data.grow-grass.month.aug }}'
         when 8
-          'Sep'
+          '{{ site.data.grow-grass.month.sep }}'
         when 9
-          'Oct'
+          '{{ site.data.grow-grass.month.oct }}'
         when 10
-          'Nov'
+          '{{ site.data.grow-grass.month.nov }}'
         when 11
-          'Dec'
-        else
-          'Jan'
+          '{{ site.data.grow-grass.month.dec }}'
     getJSON: () ->
       self = this
       xhr = new XMLHttpRequest()
@@ -149,35 +181,35 @@ grow_grass = new Vue {
             data = JSON.parse xhr.response
             for key, value of self.dates
               if data[key]
-                len = data[key].length
-                self.dates[key].grass = len
-                self.count += len
+                self.dates[key].articles = data[key]
+                self.count += data[key].length
       xhr.send null
       return
     setDates: () ->
       start_date = new Date this.start_date
       end_date = new Date this.end_date
-      cnt = 0
       dates = {}
       month = null
+      isMonth = true
       while start_date.getTime() != end_date.getTime()
         d = new Date start_date
         ymd = d.getFullYear() + '-' + ('0' + (d.getMonth() + 1)).slice(-2) + '-' + ('0' + d.getDate()).slice -2
 
-        if cnt == 0 && d.getDate() < 15
-          month = this.getMonth d.getMonth()
+        if d.getDate() > 7 && d.getDate() <= 14 && isMonth
+          month = this.getMonth start_date.getMonth()
+          isMonth = false
+        else
+          month = null
 
         dates[ymd] = {
-          grass: 0
+          articles: []
           month: month
         }
 
         start_date.setDate start_date.getDate() + 1
         if d.getMonth() != start_date.getMonth()
-          month = this.getMonth start_date.getMonth()
-        else
-          month = null
-        cnt += 1
+          isMonth = true
+
       this.dates = dates
       return
   mounted: () ->
