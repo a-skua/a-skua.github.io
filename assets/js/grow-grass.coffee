@@ -92,12 +92,6 @@ grow_grass = new Vue {
         textAlign: 'right'
   methods:
     onClickColumn: (date, values, event) ->
-      rect = event.target.getBoundingClientRect()
-
-      console.log date
-      console.log values
-      console.log rect.x
-      console.log rect.y
       this.info.date = date
       this.info.articles = values.articles
       return
