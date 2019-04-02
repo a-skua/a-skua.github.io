@@ -1,6 +1,6 @@
-permalink: /blog/:categories/:year/:month/:day/:title/
+permalink: /post/:categories/:year/:month/:day/:title/
 paginate: 8
-paginate_path: "/blog/page:num"
+paginate_path: "/page:num"
 plugins: 
   - jekyll-paginate
   - jekyll-coffeescript
