@@ -1,53 +1,26 @@
-@import 'init.scss';
-@import 'pieces/border.scss';
-@import 'header.scss';
-@import 'nav.scss';
-@import 'footer.scss';
-
 @mixin base {
-	@include init;
-	@include header;
-	@include nav;
-	@include footer;
-	body {
-		main {
-			&>article {
-				margin: inherit;
-				padding: 0.5em;
-				position: inherit;
-				&>h1 {
-					margin: inherit;
-					padding: inherit;
-					position: inherit;
-					border-width: 0 0 1px;
-					@include border_solid;
-					color: #666;
-				}
-				&>section {
-					margin: 0.5em 0 0;
-					padding: 0.5em;
-					border-width: 0 0 0 1px;
-					@include border_solid;
-					&>h1,
-					&>h2,
-					&>h3,
-					&>h4,
-					&>h5,
-					&>h6 {
-						margin: 0;
-						padding: 0.5em;
-						border-width: 0 0 1px;
-						@include border_solid;
-					}
-					&>dl,
-					&>p {
-						margin: 0.5em;
-						padding: 0.5em;
-					}
-				}
-			}
-
-		}
-
-	}
+  html {
+    font-family:
+      -apple-system,
+      BlinkMacSystemFont,
+      “Segoe UI”,
+      “Roboto”,
+      “Oxygen”,
+      “Ubuntu”,
+      “Cantarell”,
+      “Fira Sans”,
+      “Droid Sans”,
+      “Helvetica Neue”,
+      sans-serif;
+    color: darkblue;
+  }
+  body {
+    margin: 0;
+    padding: 0;
+    background-color: white;
+  }
+  .container {
+    margin: 0 1em;
+    max-width: 1024px;
+  }
 }
