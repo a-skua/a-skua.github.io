@@ -13,18 +13,17 @@ title: Article List
   </a>{% endfor %}
   <ul>
     <li>
-      {% assign previous = "&lt;&lt; PREVIOUS" %}
-      {% if paginator.previous_page && paginator.previous_page == 1 %}
-      <a href="{{ site.url }}">{{ previous }}</a>
-      {% elsif paginator.previous_page %}
-      <a href="{{ site.url }}/{{ paginator.previous_page }}">{{ previous }}</a>
-      {% endif %}
+      {% if paginator.previous_page %}<a href="{{ site.url }}{{ paginator.previous_page_path }}">
+        &lt;&lt; PREVIOUS
+      </a>{% endif %}
     </li>
-    <li>{{ paginator.page }}/{{ paginator.total_pages }}</li>
     <li>
-      {% if paginator.next_page %}
-      <a href="{{site.url }}/{{ paginator.next_page }}">NEXT &gt;&gt;</a>
-      {% endif %}
+      {{ paginator.page }}/{{ paginator.total_pages }}
+    </li>
+    <li>
+      {% if paginator.next_page %}<a href="{{site.url }}{{ paginator.next_page_path }}">
+        NEXT &gt;&gt;
+      </a>{% endif %}
     </li>
   </ul>
 </article>
