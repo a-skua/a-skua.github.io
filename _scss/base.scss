@@ -12,7 +12,7 @@
       “Droid Sans”,
       “Helvetica Neue”,
       sans-serif;
-    color: darkblue;
+    color: midnightblue;
   }
   body {
     margin: 0;
@@ -20,7 +20,59 @@
     background-color: white;
   }
   .container {
-    margin: 0 1em;
-    max-width: 1024px;
+    margin: 0 auto;
+    max-width: 768px;
+  }
+  footer {
+    text-align: center;
+  }
+  h1, h2, h3, h4, h5, h6, p, section {
+    margin: 0 0 1em;
+    padding: 0;
+  }
+  a {
+    color: darkblue;
+    text-decoration: none;
+    &:visited {
+      color: inherit;
+    }
+    &:hover {
+      color: royalblue;
+      text-decoration: underline;
+    }
+  }
+
+  .blog-title {
+    display: inline-block;
+    margin: 0.5em;
+    color: inherit;
+    font-size: 2em;
+    &:hover {
+      text-decoration: none;
+    }
+  }
+  .article {
+    padding: 0 1em;
+    border-style: solid;
+    border-color: inherit;
+    border-width: 0 0 0 2px;
+  }
+  .article-link {
+    color: midnightblue;
+    & > h2 {
+      text-decoration: underline;
+    }
+    & > p {
+      color: grey;
+    }
+    &:hover {
+      color: inherit;
+      & > p {
+        color: inherit;
+      }
+    }
+  }
+  .date {
+    text-align: right;
   }
 }

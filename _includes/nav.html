@@ -1,0 +1,7 @@
+<nav>
+  <div class="container">
+    <ul>
+      {% for link in site.data.info.nav %}<li><a href="{{ site.url }}{{ link.url }}" target="_top">{{ link.title }}</a></li>{% endfor %}
+    </ul>
+  </div>
+</nav>
