@@ -21,7 +21,7 @@
   }
   .container {
     margin: 0 auto;
-    max-width: 768px;
+    max-width: 1024px;
   }
   footer {
     text-align: center;
@@ -51,6 +51,7 @@
       text-decoration: none;
     }
   }
+
   .article {
     padding: 0 1em;
     border-style: solid;
@@ -72,7 +73,26 @@
       }
     }
   }
+
   .date {
     text-align: right;
+  }
+
+  .paginator {
+    display: flex;
+    margin: 0 0 1em;
+    padding: 0;
+    & > .item {
+      list-style: none;
+      width: 0;
+      flex-grow: 1;
+      text-align: center;
+      &.left {
+        text-align: left;
+      }
+      &.right {
+        text-align: right;
+      }
+    }
   }
 }

@@ -11,16 +11,16 @@ title: Article List
       <p class="date">{{ post.date | date: "%Y-%m-%d" }}</p>
     </section>
   </a>{% endfor %}
-  <ul>
-    <li>
+  <ul class="paginator">
+    <li class="item left">
       {% if paginator.previous_page %}<a href="{{ site.url }}{{ paginator.previous_page_path }}">
         &lt;&lt; PREVIOUS
       </a>{% endif %}
     </li>
-    <li>
+    <li class="item">
       {{ paginator.page }}/{{ paginator.total_pages }}
     </li>
-    <li>
+    <li class="item right">
       {% if paginator.next_page %}<a href="{{site.url }}{{ paginator.next_page_path }}">
         NEXT &gt;&gt;
       </a>{% endif %}
