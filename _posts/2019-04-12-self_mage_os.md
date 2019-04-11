@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Linuxで始めるOS自作入門: 日目"
+title: "Linuxで始めるOS自作入門: 0日目"
 categories:
   - "OS自作入門"
 ---
