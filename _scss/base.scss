@@ -17,11 +17,11 @@
   body {
     margin: 0;
     padding: 0;
-    background-color: white;
+    background-color: ghostwhite;
   }
   .container {
     margin: 0 auto;
-    max-width: 1024px;
+    max-width: 900px;
   }
   footer {
     text-align: center;
@@ -51,12 +51,19 @@
       text-decoration: none;
     }
   }
+  .page-title {
+    display: block;
+    padding: 0.5em 1em;
+    background-color: midnightblue;
+    color: ghostwhite;
+  }
 
   .article {
     padding: 0 1em;
     border-style: solid;
     border-color: inherit;
     border-width: 0 0 0 2px;
+    overflow: hidden;
   }
   .article-link {
     color: midnightblue;
@@ -64,7 +71,7 @@
       text-decoration: underline;
     }
     & > p {
-      color: grey;
+      color: steelblue;
     }
     &:hover {
       color: inherit;
