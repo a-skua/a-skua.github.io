@@ -1,30 +1,17 @@
 ---
 ---
 <!DOCTYPE html>
-<html>
+<html lang="{% if page.lang %}{{ page.lang }}{% else %}ja{% endif %}">
 <head>
-<title>{{ page.title }} | {{ site.data.info.title }}</title>
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<link rel="stylesheet" href="{{ site.url }}/assets/css/{{ layout.stylesheet }}.css">
-<!-- <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script> -->
-<script src="https://cdn.jsdelivr.net/npm/vue"></script>
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-127256499-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      
-        gtag('config', 'UA-127256499-1');
-</script>
+  <title>{{ page.title }}</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="stylesheet" media="(max-width:1024px)" href="{{ site.url }}/assets/css/{{ layout.stylesheet }}-tablet.css">
+  <link rel="stylesheet" media="(min-width:1024px)" href="{{ site.url }}/assets/css/{{ layout.stylesheet }}-laptop.css">
 </head>
 <body>
-{% include default/header.html %}
-{% include default/nav.html %}
-<main>
+{% include header.html %}
 {{ content }}
-</main>
-{% include default/footer.html %}
+{% include footer.html %}
 <script async src="{{ site.url }}/assets/js/{{ layout.javascript }}.js"></script>
 </body>
 </html>

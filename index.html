@@ -1,24 +1,31 @@
 ---
 layout: default
-title: Top
+title: Article List
 ---
 <article>
-<h1>{{ page.title }}</h1>
-<section>
-<h1>Log</h1>
-<dl>
-{% for log in site.data.logs %}
-	<dt>{{ log.date }}</dt>
-	<dd>{{ log.content }}</dd>
-{% endfor %}
-</dl>
-</section>
+  <h1 class="page-title">{{ page.title }}</h1>
+  {% for post in paginator.posts %}<a href="{{ site.url }}{{ post.url }}">
+    <section class="article article-link">
+      <h2>{{ post.title }}</h2>
+      <p>{{ post.content | strip_html | truncate: 128 }}<p>
+      <p class="date">{{ post.date | date: "%Y-%m-%d" }}</p>
+    </section>
+  </a>{% endfor %}
 
-<section>
-	<h1>Article update</h1>
-	<div id="grow-grass"></div>
-</section>
+  <ul class="paginator">
+    <li class="item left">
+      {% if paginator.previous_page %}<a href="{{ site.url }}{{ paginator.previous_page_path }}">
+        &lt;&lt; PREVIOUS
+      </a>{% endif %}
+    </li>
+    <li class="item">
+      {{ paginator.page }}/{{ paginator.total_pages }}
+    </li>
+    <li class="item right">
+      {% if paginator.next_page %}<a href="{{site.url }}{{ paginator.next_page_path }}">
+        NEXT &gt;&gt;
+      </a>{% endif %}
+    </li>
+  </ul>
 </article>
 
-<!-- TODO: スクリプトを読み込むタイミング調整 -->
-<script async src="{{ site.url }}/assets/js/grow-grass.js"></script>
