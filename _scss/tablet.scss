@@ -1,0 +1,8 @@
+@import 'base.scss';
+
+@mixin tablet {
+  @include base;
+  header, nav, main, footer {
+    margin: 0 1em;
+  }
+}

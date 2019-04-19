@@ -3,31 +3,28 @@ layout: base
 stylesheet: post
 javascript: default
 ---
-<article>
-<h1>Article</h1>
+<main>
+  <div class="container">
+    <article>
+      <h1 class="page-title">{{ page.title }}</h1>
 
-<section class="article">
-<h1>{{ page.title }}</h1>
-{{ page.content }}
+      <div class="article">
+        {{ page.content }}
+        <p class="date">{{ page.date | date: '%Y/%m/%d' }}</p>
+      </div>
 
-<p>{{ page.date | date: '%Y/%m/%d' }}</p>
-</section>
-
-<section>
-<p><a href="https://twitter.com/intent/tweet?screen_name=19700101_000000&ref_src=twsrc%5Etfw" class="twitter-mention-button" data-text="{{ site.url }}{{ page.url }}" data-related="" data-show-count="false">Tweet to @19700101_000000</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script></p>
-</section>
-
-<section class="paginator">
-<p>
-{% if page.next %}
-	<a href="{{ site.url }}{{ page.next.url }}">&lt;&lt; {{ page.next.title }}</a>
-{% endif %}
-</p>
-
-<p>
-{% if page.previous %}
-	<a href="{{ site.url }}{{ page.previous.url }}">{{ page.previous.title }} &gt;&gt;</a>
-{% endif %}
-</p>
-</section>
-</article>
+      <ul class="paginator">
+        <li class="item left">
+          {% if page.previous %}<a href="{{ site.url }}{{ page.previous.url }}">
+            &lt;&lt; {{ page.previous.title }}
+          </a>{% endif %}
+        </li>
+        <li class="item right">
+          {% if page.next %}<a href="{{site.url }}{{ page.next.url }}">
+            {{ page.next.title }} &gt;&gt;
+          </a>{% endif %}
+        </li>
+      </ul>
+    </article>
+  </div>
+</main>

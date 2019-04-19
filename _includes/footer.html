@@ -1,0 +1,15 @@
+<footer>
+  <div class="container">
+    <p class="footer-links">
+      <a href="{{ site.url }}">Top</a>
+      <a href="https://github.com/19700101000000/19700101000000.github.io">Repository</a>
+    </p>
+    <p>
+      {% assign update_year = site.time | date: '%Y' %}
+      &copy;
+      {{ site.data.info.create_year }}
+      {% if site.data.info.create_year != update_year  %}- {{ update_year }}{% endif %}
+      {{ site.data.info.author }}
+    </p>
+  </div>
+</footer>
