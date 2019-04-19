@@ -1,3 +1,6 @@
+@import 'classes.scss';
+@import 'syntax-highlight.scss';
+
 @mixin base {
   html {
     font-family:
@@ -30,6 +33,9 @@
     margin: 0 0 1em;
     padding: 0;
   }
+  ol, ul, dl {
+    margin: 0 0 1em;
+  }
   a {
     color: darkblue;
     text-decoration: none;
@@ -41,65 +47,16 @@
       text-decoration: underline;
     }
   }
-
-  .blog-title {
-    display: inline-block;
-    margin: 0.5em;
-    color: inherit;
-    font-size: 2em;
-    &:hover {
-      text-decoration: none;
-    }
-  }
-  .page-title {
-    display: block;
-    padding: 0.5em 1em;
-    background-color: midnightblue;
-    color: ghostwhite;
-  }
-
-  .article {
-    padding: 0 1em;
+  blockquote {
+    margin: 1em;
+    padding: 0 0 0 1em;
     border-style: solid;
-    border-color: inherit;
-    border-width: 0 0 0 2px;
-    overflow: hidden;
-  }
-  .article-link {
-    color: midnightblue;
-    & > h2 {
-      text-decoration: underline;
-    }
-    & > p {
-      color: steelblue;
-    }
-    &:hover {
-      color: inherit;
-      & > p {
-        color: inherit;
-      }
-    }
+    border-width: 0 0 0 0.5em;
+    border-color: lightsteelblue;
+    font-style: italic;
+    color: royalblue;
   }
 
-  .date {
-    text-align: right;
-  }
-
-  .paginator {
-    display: flex;
-    margin: 0 0 1em;
-    padding: 0;
-    & > .item {
-      list-style: none;
-      width: 0;
-      flex-grow: 1;
-      text-align: center;
-      &.left {
-        text-align: left;
-      }
-      &.right {
-        text-align: right;
-      }
-    }
-  }
+  @include classes;
+  @include syntax-highlight;
 }
