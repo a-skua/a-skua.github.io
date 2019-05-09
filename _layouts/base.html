@@ -7,6 +7,14 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <link rel="stylesheet" media="(max-width:1024px)" href="{{ site.url }}/assets/css/{{ layout.stylesheet }}-tablet.css">
   <link rel="stylesheet" media="(min-width:1024px)" href="{{ site.url }}/assets/css/{{ layout.stylesheet }}-laptop.css">
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-127256499-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-127256499-1');
+  </script>
 </head>
 <body>
 {% include header.html %}
