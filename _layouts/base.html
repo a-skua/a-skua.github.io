@@ -5,6 +5,10 @@
 <head>
   <title>{{ page.title }}</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@19700101_000000">
+  <meta name="twitter:title" content="{{ page.title }}">
+  <meta name="twitter:description" content="{{ page.content | strip_html | truncate: 128 }}">
   <link rel="stylesheet" media="(max-width:1024px)" href="{{ site.url }}/assets/css/{{ layout.stylesheet }}-tablet.css">
   <link rel="stylesheet" media="(min-width:1024px)" href="{{ site.url }}/assets/css/{{ layout.stylesheet }}-laptop.css">
   <!-- Global site tag (gtag.js) - Google Analytics -->
