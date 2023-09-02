@@ -1,31 +1,10 @@
----
-layout: default
-title: Article List
----
-<article>
-  <h1 class="page-title">{{ page.title }}</h1>
-  {% for post in paginator.posts %}<a href="{{ site.url }}{{ post.url }}">
-    <section class="article article-link">
-      <h2>{{ post.title }}</h2>
-      <p>{{ post.content | strip_html | truncate: 128 }}<p>
-      <p class="date">{{ post.date | date: "%Y-%m-%d" }}</p>
-    </section>
-  </a>{% endfor %}
-
-  <ul class="paginator">
-    <li class="item left">
-      {% if paginator.previous_page %}<a href="{{ site.url }}{{ paginator.previous_page_path }}">
-        &lt;&lt; PREVIOUS
-      </a>{% endif %}
-    </li>
-    <li class="item">
-      {{ paginator.page }}/{{ paginator.total_pages }}
-    </li>
-    <li class="item right">
-      {% if paginator.next_page %}<a href="{{site.url }}{{ paginator.next_page_path }}">
-        NEXT &gt;&gt;
-      </a>{% endif %}
-    </li>
-  </ul>
-</article>
-
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Under Maintenance</title>
+  </head>
+  <body>
+    <h1>Under Maintenance</h1>
+  </body>
+</html>

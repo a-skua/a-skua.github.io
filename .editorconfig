@@ -4,6 +4,6 @@ root = true
 end_of_line = lf
 charset = utf-8
 
-[*.{coffee,yml,md,html,scss,json}]
+[*.{coffee,ts,yaml,yml,md,html,scss,json}]
 indent_style = space
 indent_size = 2
