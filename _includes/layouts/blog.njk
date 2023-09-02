@@ -1,0 +1,12 @@
+---
+layout: layouts/main.njk
+language: ja
+title: Default Blog Title
+---
+<article language="{{ language }}">
+  <header>
+    <h1>{{ title }}</h1>
+  </header>
+
+  {{ content | safe }}
+</article>

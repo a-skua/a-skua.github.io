@@ -1,0 +1,27 @@
+---
+language: ja
+title: Default Main Title
+---
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <title>{{ title }}</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-FQWQWSCP0T"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+    
+      gtag('config', 'G-FQWQWSCP0T');
+    </script>
+  </head>
+
+  <body>
+    <main>
+      {{ content | safe }}
+    </main>
+  </body>
+</html>
