@@ -1,0 +1,15 @@
+---
+layout: layouts/main.njk
+---
+<ul>
+  {% for blog in search.pages("blog") %}
+    <li>
+    <a href="{{ blog.data.url }}">
+      <h2>{{ blog.data.title }}</h2>
+      <p>{{ blog.data.content.slice(0, 255) }}</p>
+      <p>{{ blog.data.date.toISOString() }}</p>
+      <p>{{ blog.data.categories }}</p>
+    </a>
+    </li>
+  {% endfor %}
+</ul>

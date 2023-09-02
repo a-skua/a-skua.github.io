@@ -1,0 +1,17 @@
+layout = "layouts/main.njk"
+language = "ja"
+
+[info]
+title = "Think"
+
+[[nav.contents]]
+title = "Home"
+url = "/"
+
+[[nav.contents]]
+title = "About"
+url = "/about/"
+
+[[nav.contents]]
+title = "Blog"
+url = "/blog/"

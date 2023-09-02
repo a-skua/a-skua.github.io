@@ -1,25 +1,35 @@
 ---
-language: ja
-title: Default Main Title
+title: "-"
 ---
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="{{ language }}">
   <head>
     <meta charset="utf-8">
-    <title>{{ title }}</title>
+    <title>{{ title }} | {{ info.title.toUpperCase() }}</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="/assets/styles/main.css">
+
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-FQWQWSCP0T"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-    
       gtag('config', 'G-FQWQWSCP0T');
     </script>
   </head>
 
   <body>
+    <header>
+      <h1>{{ info.title.toUpperCase() }}</h1>
+      <nav>
+        <ul>
+          {% for content in nav.contents %}
+            <li><a href="{{ content.url }}">{{ content.title }}</a></li>
+          {% endfor %}
+        </ul>
+      </nav>
+    </header>
     <main>
       {{ content | safe }}
     </main>

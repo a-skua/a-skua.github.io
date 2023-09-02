@@ -1,5 +1,4 @@
 ---
-layout: layouts/main.njk
 title: THINK
 ---
 

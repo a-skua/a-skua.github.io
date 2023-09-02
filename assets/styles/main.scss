@@ -1,0 +1,43 @@
+body {
+  all: initial;
+}
+
+header {
+  all: initial;
+  display: block;
+  border-bottom: 1px solid black;
+  padding: 0.5em;
+  & > h1 {
+    all: initial;
+    display: inline-block;
+    font-size: 1.5em;
+    font-family: sans-serif;
+    color: #ccc;
+    + nav {
+      all: initial;
+      display: inline-block;
+      padding-left: 0.5em;
+      margin-left: 0.5em;
+      border-left: 1px solid #ccc;
+      & > ul {
+        all: initial;
+        display: inline-block;
+        & > li {
+          all: initial;
+          display: inline-block;
+          + li {
+            margin-left: 1em;
+          }
+          & > a {
+            all: initial;
+            font-family: sans-serif;
+            &:hover {
+              cursor: pointer;
+              text-decoration: underline;
+            }
+          }
+        }
+      }
+    }
+  }
+}
