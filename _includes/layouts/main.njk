@@ -8,6 +8,7 @@ title: "-"
     <title>{{ title }} | {{ info.title.toUpperCase() }}</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <link rel="stylesheet" href="/assets/styles/main.css">
+    <link rel="stylesheet" href="/assets/styles/syntax.css">
 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-FQWQWSCP0T"></script>
@@ -25,13 +26,23 @@ title: "-"
       <nav>
         <ul>
           {% for content in nav.contents %}
-            <li><a href="{{ content.url }}">{{ content.title }}</a></li>
+            <li class="{{ "current-page" if url == content.url }}">
+              {% if url == content.url %}
+                {{ content.title }}
+              {% else %}
+                <a href="{{ content.url }}">{{ content.title }}</a>
+              {% endif %}
+            </li>
           {% endfor %}
         </ul>
       </nav>
     </header>
     <main>
+      <h1>{{ title }}</h1>
       {{ content | safe }}
     </main>
+    <footer>
+      <p>TODO</p>
+    </footer>
   </body>
 </html>

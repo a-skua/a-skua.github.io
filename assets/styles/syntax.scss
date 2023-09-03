@@ -1,0 +1,15 @@
+@import "https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.6.0/build/styles/github.min.css";
+
+pre {
+  all: initial;
+  display: block;
+  border: 1px solid #ccc;
+  font-family: monospace;
+  padding: 0;
+  margin-top: 1em;
+  code {
+    all: initial;
+    font-family: monospace;
+    white-space-collapse: preserve;
+  }
+}

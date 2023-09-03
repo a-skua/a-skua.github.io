@@ -18,7 +18,7 @@ Linux(Debian)から，Wi-Fiに接続するために必要なサービス:
 `NetworkManager.service`という便利なものもあるよう．
 これは`nmcli device wifi list`といったWi-Fiの状態を確認できたりする便利なコマンドを提供してくれてはいるが，
 今回は使わず．
-```
+```text
 ~ $ systemctl is-active NetworkManager wpa_supplicant networking dhcpcd
 inactive
 active
@@ -34,7 +34,7 @@ active
 
 ### Wi-Fiデバイスを有効にする
 Wi-Fiデバイスが有効になっているかどうかは`rfkill`コマンドを利用して確認可能．
-```
+```text
 ~ $ rfkill list
 0: phy0: Wireless LAN
 	Soft blocked: no
@@ -47,7 +47,7 @@ Wi-Fiデバイスが有効になっているかどうかは`rfkill`コマンド�
 
 ### Wi-Fiの接続設定を行う
 `/etc/wpa_supplicant/wpa_supplicant.conf`に次のように記載．
-```conf
+```text
 ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
 update_config=1
 country=JP
@@ -71,7 +71,7 @@ EAL-TLSを利用するので， `key_mgmt=WPA-EAP`と`eap=TLS`を設定．
 
 ### Wi-Fiデバイスのインターフェースを起動する
 Wi-Fiデバイスのインターフェースは， `wlan0`として認識されているはず．
-```
+```text
 ~ $ ip addr show dev wlan0
 3: wlan0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP group default qlen 1000
     link/ether *** brd ff:ff:ff:ff:ff:ff
@@ -82,7 +82,7 @@ Wi-Fiデバイスのインターフェースは， `wlan0`として認識され�
 が，もし `state DOWN`となっているようであれば，インターフェースを起動してあげる必要がある．
 
 `/etc/network/interfaces`に次の設定を追記
-```
+```text
 auto wlan0
 allow-hotplug wlan0
 iface wlan0 inet manual

@@ -1,5 +1,5 @@
 ---
-title: THINK
+title: Home
 ---
 
-# UNDER MAINTENANCE
+UNDER MAINTENANCE
