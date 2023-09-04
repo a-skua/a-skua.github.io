@@ -161,6 +161,9 @@ blockquote {
   margin-top: 1em;
   padding-left: 1.5em;
   border-left: 0.5ex solid #ccc;
+  * {
+    color: #666;
+  }
 }
 code {
   all: initial;

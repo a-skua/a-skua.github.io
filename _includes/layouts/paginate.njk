@@ -7,8 +7,8 @@ layout: layouts/main.njk
       <a class="page-link" href="{{ page.data.url }}">
         <h2 class="title">{{ page.data.title }}</h2>
         <p class="description">{{ page.data.content.slice(0, 255) }}</p>
-        <p class="date">{{ page.data.date.toLocaleDateString() }}</p>
       </a>
+      <p class="date">{{ page.data.date.toLocaleDateString() }}</p>
       <ul class="categories">
         {% for category in page.data.categories %}
           <li>{{ category }}</li>
