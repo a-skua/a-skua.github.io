@@ -1,10 +1,23 @@
 ---
 layout: layouts/blog.njk
-date: 2023-09-02
+date: 2037-12-31
 title: Example
 draft: true
 tags:
   - blog
+categories:
+  - Example
+  - サンプル
+  - Example
+  - サンプル
+  - Example
+  - サンプル
+  - Example
+  - サンプル
+  - Example
+  - サンプル
+  - Example
+  - サンプル
 ---
 
 ブログサンプルページ．

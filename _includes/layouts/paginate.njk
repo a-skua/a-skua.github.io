@@ -1,0 +1,37 @@
+---
+layout: layouts/main.njk
+---
+<ul class="pages">
+  {% for page in results %}
+    <li>
+      <a class="page-link" href="{{ page.data.url }}">
+        <h2 class="title">{{ page.data.title }}</h2>
+        <p class="description">{{ page.data.content.slice(0, 255) }}</p>
+        <p class="date">{{ page.data.date.toLocaleDateString() }}</p>
+      </a>
+      <ul class="categories">
+        {% for category in page.data.categories %}
+          <li>{{ category }}</li>
+        {% endfor %}
+      </ul>
+    </li>
+  {% endfor %}
+</ul>
+
+<ul class="paginate">
+  <li>
+    {% set previous = pagination.previous %}
+    &lt;
+    {% if previous %}
+      <a href="{{ previous }}">Previous</a>
+    {% endif %}
+  </li>
+  <li>{{ pagination.page }} of {{ pagination.totalPages }}</li>
+  <li>
+    {% set next = pagination.next %}
+    {% if next %}
+      <a href="{{ next }}">Next</a>
+    {% endif %}
+    &gt;
+  </li>
+</ul>

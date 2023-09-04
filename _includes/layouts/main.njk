@@ -42,7 +42,15 @@ title: "-"
       {{ content | safe }}
     </main>
     <footer>
-      <p>TODO</p>
+    <p class="footer-info">
+      <a href="{{ info.repository }}" target="_blank">Repository</a>
+    </p>
+    <p class="footer-info">
+      &copy;
+      {% set year = date.getFullYear() %}
+      {{ info.create_year }}{% if info.create_year != year %}-{{ year }}{% endif %}
+      {{ info.author }}
+    </p>
     </footer>
   </body>
 </html>

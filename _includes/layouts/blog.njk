@@ -1,8 +1,32 @@
 ---
 layout: layouts/main.njk
-language: ja
-title: Default Blog Title
 ---
+
+<p class="date">{{ date.toLocaleDateString() }}</p>
+
+<ul class="categories">
+  {% for category in categories %}
+    <li>{{ category }}</li>
+  {% endfor %}
+</ul>
+
 <article language="{{ language }}">
   {{ content | safe }}
 </article>
+
+<ul class="paginate">
+    <li>
+      {% set previous = search.previousPage(url, "blog", "date=desc") %}
+      &lt;
+      {% if previous %}
+        <a href="{{ previous.data.url }}">{{ previous.data.title }}</a>
+      {% endif %}
+    </li>
+  <li>
+    {% set next = search.nextPage(url, "blog", "date=desc") %}
+    {% if next %}
+      <a href="{{ next.data.url }}">{{ next.data.title }}</a>
+    {% endif %}
+    &gt;
+  </li>
+</ul>

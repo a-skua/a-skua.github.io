@@ -36,14 +36,25 @@ header {
           & > a {
             all: initial;
             font-family: sans-serif;
+            text-decoration: underline;
             &:hover {
               cursor: pointer;
-              text-decoration: underline;
             }
           }
         }
       }
     }
+  }
+}
+
+a {
+  all: initial;
+  display: inline-block;
+  font-family: sans-serif;
+  color: #366;
+  text-decoration: underline;
+  &:hover {
+    cursor: pointer;
   }
 }
 
@@ -59,10 +70,14 @@ main {
 
 footer {
   all: initial;
-}
-
-.current-page {
-  color: #ccc;
+  display: block;
+  text-align: center;
+  font-family: sans-serif;
+  border-top: 1px solid black;
+  padding: 0 0 1em;
+  & > * {
+    text-align: center;
+  }
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -83,11 +98,11 @@ h5, h6 {
   font-size: 1em;
 }
 
-* + h1, * + h2, * + h3, * + h4, * + h5, * + h6 {
-  margin-top: 1em;
-}
-
 article {
+  h1, h2, h3, h4, h5, h6 {
+    margin-top: 1em;
+  }
+
   h2, h3, h4, h5, h6 {
     border-left: 0.5ex solid #366;
     padding: 0 0 0 0.5em;
@@ -107,6 +122,10 @@ li {
 }
 
 ul {
+  all: initial;
+  display: block;
+  margin-top: 1em;
+  padding-left: 1em;
   li {
     &::marker {
       content: "- ";
@@ -115,7 +134,17 @@ ul {
   }
 }
 
+li {
+  & > ul, & > ol {
+    margin: 0;
+  }
+}
+
 ol {
+  all: initial;
+  display: block;
+  margin-top: 1em;
+  padding-left: 1.5em;
   li {
     &::marker {
       direction: ltr;
@@ -124,6 +153,15 @@ ol {
   }
 }
 
+blockquote {
+  all: initial;
+  display: block;
+  position: relative;
+  font-family: sans-serif;
+  margin-top: 1em;
+  padding-left: 1.5em;
+  border-left: 0.5ex solid #ccc;
+}
 code {
   all: initial;
   display: inline-block;;
@@ -132,4 +170,97 @@ code {
   font-family: monospace;
   color: #336;
   background-color: #f9f9ff;
+}
+
+.current-page {
+  color: #ccc;
+}
+
+.paginate {
+  all: initial;
+  font-family: sans-serif;
+  margin-top: 1em;
+  padding-top: 1em;
+  display: flex;
+  justify-content: space-between;
+    border-top: 1px solid #ccc;
+  & > * {
+    all: initial;
+    color: #ccc;
+    font-family: sans-serif;
+  }
+}
+
+.date {
+  all: initial;
+  display: block;
+  font-family: sans-serif;
+  text-align: right;
+  color: #ccc;
+}
+
+.categories {
+  all: initial;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  & > * {
+    all: initial;
+    display: block;
+    font-family: sans-serif;
+    color: #ccc;
+    border-bottom: 1px dashed #ccc;
+    margin: 0.25em;
+  }
+}
+
+.pages {
+  all: initial;
+  & > * {
+    all: initial;
+    display: block;
+    font-family: sans-serif;
+    margin-top: 1em;
+  }
+}
+
+a.page-link {
+  all: initial;
+  display: block;
+  font-family: sans-serif;
+  color: #366;
+  &:hover {
+    cursor: pointer;
+    text-decoration: underline;
+    * {
+      cursor: inherit;
+      text-decoration: inherit;
+    }
+  }
+  .title {
+    text-decoration: underline;
+  }
+}
+
+.title {
+  all: initial;
+  display: block;
+  font-family: sans-serif;
+  font-size: 1.5em;
+  color: #366;
+}
+
+.description {
+  all: initial;
+  display: block;
+  font-family: sans-serif;
+  color: #666;
+  font-size: 0.75em;
+  margin-top: 0.5em;
+}
+
+.footer-info {
+  margin: 0;
+  text-align: center;
+  margin-top: 0.5em;
 }

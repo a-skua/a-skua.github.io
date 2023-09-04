@@ -4,8 +4,8 @@ title: RaspberryPiからWi-Fi(EAP-TLS)に接続する
 tags:
   - blog
 categories:
-  - "RaspberryPi"
-  - "Linux"
+  - RaspberryPi
+  - Linux
 ---
 
 RaspberryPiからWi-Fiに接続しようとして試行錯誤していたのでそのメモ．

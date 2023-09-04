@@ -3,6 +3,9 @@ language = "ja"
 
 [info]
 title = "Think"
+author = "Asuka"
+create_year = 2018
+repository = "https://github.com/a-skua/a-skua.github.io"
 
 [[nav.contents]]
 title = "Home"
