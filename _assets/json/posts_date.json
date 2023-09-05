@@ -1,3 +1,0 @@
----
----
-{ {% for post in site.posts %}{% capture now_date %}{{ post.date | date:'%Y-%m-%d' }}{% endcapture %}{% if date != now_date %}{% if forloop.first == false %}],{% endif %}"{{ now_date }}":[{% capture date %}{{ now_date }}{% endcapture %}{% endif %}{% if check == now_date %}, {% else %}{% capture check %}{{ now_date }}{% endcapture %}{% endif %}{"title":"{{ post.title }}", "url":"{{ post.url | prepend: site.url }}"}{% endfor %}] }

@@ -14,22 +14,3 @@ export default function* ({ search, paginate }) {
     yield page;
   }
 }
-
-/*
----
-layout: layouts/main.njk
-title: Blog
----
-<ul>
-  {% for blog in search.pages("blog", "date=desc") %}
-    <li>
-    <a href="{{ blog.data.url }}">
-      <h2>{{ blog.data.title }}</h2>
-      <p>{{ blog.data.content.slice(0, 255) }}</p>
-      <p>{{ blog.data.date.toISOString() }}</p>
-      <p>{{ blog.data.categories }}</p>
-    </a>
-    </li>
-  {% endfor %}
-</ul>
-*/

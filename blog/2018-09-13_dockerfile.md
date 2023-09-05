@@ -16,21 +16,21 @@ Goの実行環境を作ったりしてみたのですが、
 Dockerfileをbuildするときにソースファイルを読みこんでいました。
 こんな感じに…
 
-{% highlight dockerfile linenos %}
+```dockerfile
 FROM golang
 
 WORKDIR /go/src/hello
 COPY . .
 
 CMD go build && ./hello
-{% endhighlight %}
+```
 
 ただ、このやり方だと、
 ソースを書き直すたびに build をやり直す必要があるため、なんだか面倒だなーと。
 探したところ、docker-compose の volumes を利用すると上手くいきそう…
 そういうわけで実装してみました。
 
-{% highlight dockerfile linenos %}
+```dockerfile
 FROM golang
 MAINTAINER asuka
 
@@ -40,11 +40,11 @@ RUN go get -u github.com/golang/dep/...
 
 
 CMD dep ensure && go build && ./server
-{% endhighlight %}
+```
 
 こんなふうにDockerfileを書いて…
 
-{% highlight yaml linenos%}
+```yaml
 version: "3"
 
 services: 
@@ -60,7 +60,7 @@ services:
       -  80:80
     links:
       - server
-{% endhighlight %}
+```
 
 こんな感じに docker-compose を書く。
 
@@ -70,6 +70,6 @@ services:
 この辺の設定について、また何か良い案があれば載せたいと思います。
 
 実際に作っているリポジトリがあるので、気になる方は
-[こちら](https://github.com/19700101000000/system-sample)
+[こちら](https://github.com/a-skua/system-sample)
 を参照してください。
 ただし、アクティブはリポジトリなので、書き換わる可能性がありますが…

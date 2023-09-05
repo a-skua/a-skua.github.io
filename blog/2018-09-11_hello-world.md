@@ -16,7 +16,7 @@ categories:
 ブログの最初ということで、Hello,World ネタをやります。
 まずは下記のソースを。
 
-{% highlight go linenos %}
+```go
 package main
 
 import "fmt"
@@ -29,15 +29,15 @@ func main() {
 	str1, str2 = str2, str1
 	fmt.Println(str1, str2)
 }
-{% endhighlight %}
+```
 
 何をやっているか分かるでしょうか。
 出力結果は次のようになります。
 
-{% highlight shell linenos %}
+```shell
 hello world
 world hello
-{% endhighlight %}
+```
 
 これは、Go言語における変数の入れ替えです。
 他言語からを使っていた私にとってかなりの衝撃でした。
