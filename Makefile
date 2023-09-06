@@ -1,6 +1,6 @@
 .PHONY: up
 up:
-	bundle exec jekyll serve
+	deno task serve
 
 .PHONY: new
 new:
