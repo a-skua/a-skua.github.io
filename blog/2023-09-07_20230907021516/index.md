@@ -1,7 +1,6 @@
 ---
 layout: layouts/blog.njk
 title: ShellScriptとしてRubyを利用する
-draft: true
 tags:
   - blog
 categories:
