@@ -2,4 +2,4 @@
 title: About
 ---
 
-UNDER MAINTENANCE
+準備中．

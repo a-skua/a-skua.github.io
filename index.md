@@ -1,5 +1,8 @@
 ---
+layout: layouts/index.njk
 title: Home
 ---
 
-UNDER MAINTENANCE
+## ようこそ
+
+サイトメンテナンス中です．

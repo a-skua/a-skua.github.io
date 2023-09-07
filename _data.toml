@@ -1,7 +1,7 @@
 layout = "layouts/main.njk"
 language = "ja"
 
-[info]
+[site]
 title = "Think"
 author = "Asuka"
 create_year = 2018

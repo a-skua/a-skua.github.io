@@ -9,7 +9,6 @@ import lang_javascript from "npm:highlight.js/lib/languages/javascript";
 import lang_plaintext from "npm:highlight.js/lib/languages/plaintext";
 import lang_bash from "npm:highlight.js/lib/languages/bash";
 
-
 const site = lume({
   // TODO
 });

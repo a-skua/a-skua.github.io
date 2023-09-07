@@ -1,0 +1,19 @@
+---
+layout: layouts/main.njk
+---
+
+<section>
+  <h2>最新の記事</h2>
+  <ul>
+    {% for article in search.pages("blog", "date=desc").slice(0, 5) %}
+      <li>
+        <a href="{{ article.data.url }}">{{ article.data.title }}</a>
+        ({{ article.data.date.toLocaleDateString() }})
+      </li>
+    {% endfor %}
+  </ul>
+</section>
+
+<section>
+  {{ content | safe }}
+</section>

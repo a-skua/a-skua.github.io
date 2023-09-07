@@ -5,7 +5,7 @@ title: "-"
 <html lang="{{ language }}">
   <head>
     <meta charset="utf-8">
-    <title>{{ title }} | {{ info.title.toUpperCase() }}</title>
+    <title>{{ title }} | {{ site.title.toUpperCase() }}</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <link rel="stylesheet" href="/assets/styles/main.css">
     <link rel="stylesheet" href="/assets/styles/syntax.css">
@@ -22,7 +22,7 @@ title: "-"
 
   <body>
     <header>
-      <h1>{{ info.title.toUpperCase() }}</h1>
+      <h1>{{ site.title.toUpperCase() }}</h1>
       <nav>
         <ul>
           {% for content in nav.contents %}
@@ -43,13 +43,13 @@ title: "-"
     </main>
     <footer>
     <p class="footer-info">
-      <a href="{{ info.repository }}" target="_blank">Repository</a>
+      <a href="{{ site.repository }}" target="_blank">Repository</a>
     </p>
     <p class="footer-info">
       &copy;
       {% set year = date.getFullYear() %}
-      {{ info.create_year }}{% if info.create_year != year %}-{{ year }}{% endif %}
-      {{ info.author }}
+      {{ site.create_year }}{% if site.create_year != year %}-{{ year }}{% endif %}
+      {{ site.author }}
     </p>
     </footer>
   </body>
