@@ -267,40 +267,91 @@ POSIXやUnixのアクセス制御のアプローチをそのまま持ってい�
 > ##### Portability
 > POSIX provides source code portability. You can compile the same source code with different versions of libc to target different machines.
 
-(TODO)
+##### ポータビリティ(移植性)
+POSIXのソースコードは移植性を提供します．
+同じソースコードを異なるバージョンの libc でコンパイルし，異なるコンピュータをターゲットにできます．
 
 > But WebAssembly needs to go one step beyond this. We need to be able to compile once and run across a whole bunch of different machines. We need portable binaries.
 
+しかし，WebAssemblyはこれを一歩越える必要があります．
+一度のコンパイルで様々なコンピュータで実行できる必要があります．
+移植性の高いバイナリを必要としているのです．
+
 > This kind of portability makes it much easier to distribute code to users.
 
+この手の移植性はユーザーにコードを配布するのをより簡単にします．
+
 > For example, if Node’s native modules were written in WebAssembly, then users wouldn’t need to run node-gyp when they install apps with native modules, and developers wouldn’t need to configure and distribute dozens of binaries.
+
+例えば，もし Node のネイティブモジュールがWebAssemblyで書かれていた場合，ユーザはネイティブモジュールをアプリにインストールするときに node-gyp を実行する必要がなくなり，開発者は数十のバイナリを構築して配布を行わなくとも良くなります．
 
 > ##### Security
 > When a line of code asks the operating system to do some input or output, the OS needs to determine if it is safe to do what the code asks.
 
+##### セキュリティ(安全性)
+コード上でOSに問い合わせをし，何かの入力や出力を行う時，OSはコードからの問い合わせが安全に実行できるかどうかを判断する必要があります．
+
 > Operating systems typically handle this with access control that is based on ownership and groups.
+
+OSは通常所有権やグループに基づいてアクセス制御を利用してこれを行います．
 
 > For example, the program might ask the OS to open a file. A user has a certain set of files that they have access to.
 
+例えば，プログラムがOSに問い合わせてファイルを開こうとした場合があり，ユーザーはアクセスできる特定のファイルセットを持っています．
+
 > When the user starts the program, the program runs on behalf of that user. If the user has access to the file — either because they are the owner or because they are in a group with access — then the program has that same access, too.
+
+ユーザーがプログラムを開始した時，プログラムはユーザーの代わりに実行します．
+ユーザーがファイルにアクセスできる場合(ファイルを所有しているかアクセスできるグループのどちらか)，プログラムも同じアクセス権を持ちます．
 
 > This protects users from each other. That made a lot of sense when early operating systems were developed. Systems were often multi-user, and administrators controlled what software was installed. So the most prominent threat was other users taking a peek at your files.
 
+これによりユーザー同士が保護されます．
+これは初期のOSが開発された時は理にかなっていました．
+システムはマルチユーザーで，管理者によってソフトウェアのインストールが管理されており，
+最大の脅威は他のユーザーにあなたのファイルを見られることだったからです．
+
 > That has changed. Systems now are usually single user, but they are running code that pulls in lots of other, third party code of unknown trustworthiness. Now the biggest threat is that the code that you yourself are running will turn against you.
+
+状況は変わりました．
+現在のシステムは通常シングルユーザーで，たくさんの安全性のわからないサードパーティのコードを取り込んだコードを実行しています．
+現在の最大の脅威は，実行しているコードが利用者に敵対することです．
 
 > For example, let’s say that the library you’re using in an application gets a new maintainer (as often happens in open source). That maintainer might have your interest at heart… or they might be one of the bad guys. And if they have access to do anything on your system — for example, open any of your files and send them over the network — then their code can do a lot of damage.
 
+例えば，あなたが使っているアプリケーションのライブラリが新しいメンテナーを迎えました(オープンソースでは良くあること)．
+そのメンテナーは利用者に興味を持っているかもしれないし，もしくは悪者かもしれないです．
+そしてもし彼らがあなたのシステム上で何かするためのアクセス権を持っている時(ファイルを開いたり，ネットワークの外にファイルを送るなど)，彼らのコードは多くの被害をもたらす可能性があります．
+
 > This is why using third-party libraries that can talk directly to the system can be dangerous.
+
+これがシステムと直接対話できるサーボパーティのライブラリを使うことが危険な理由です．
 
 > WebAssembly’s way of doing security is different. WebAssembly is sandboxed.
 
+WebAssemblyのセキュリティ方法は異なります．
+WebAssemblyはサンドボックスです．
+
 > This means that code can’t talk directly to the OS. But then how does it do anything with system resources? The host (which might be a browser, or might be a wasm runtime) puts functions in the sandbox that the code can use.
+
+これはコードが直接OSと対話できないことを意味します．
+ではどうやってシステムリソースを処理するのでしょうか?
+ホスト(ブラウザやWasmランタイム)がコード尾が利用できる関数をサンドボックスに渡します．
 
 > This means that the host can limit what a program can do on a program-by-program basis. It doesn’t just let the program act on behalf of the user, calling any system call with the user’s full permissions.
 
+これはホストがプログラムができることをプログラムごとに制限できることを意味します．
+これはユーザーに代わってプログラムが動作するだけでなく，ユーザーの全権限でシステムコールを呼び出すことができます．
+
 > Just having a mechanism for sandboxing doesn’t make a system secure in and of itself — the host can still put all of the capabilities into the sandbox, in which case we’re no better off — but it at least gives hosts the option of creating a more secure system.
 
+これは仕組みがあるだけで，サンドボックスがシステムを安全にするわけではありません．
+ホストは全ての機能をサンドボックスに入れることができ，その場合は何も良くはありませが，少なくとも安全なシステムを構築する手段を提供します．
+
 > In any system interface we design, we need to uphold these two principles. Portability makes it easier to develop and distribute software, and providing the tools for hosts to secure themselves or their users is an absolute must.,
+
+私たちが設計するあらゆるシステムインターフェースは，これら2つの原則を守る必要があります．
+移植性はソフトウェアの配布と開発を簡単にし，そしてホスト自身やユーザーを保護するツールの提供は絶対に必要です．
 
 > ### What should this system interface look like?
 Given those two key principles, what should the design of the WebAssembly system interface be?
