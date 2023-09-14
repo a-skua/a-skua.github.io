@@ -1,7 +1,6 @@
 ---
 layout: layouts/blog.njk
 title: "WASIの標準化: ウェブの外でWebAssemblyを実行するためのインターフェース"
-draft: true
 tags:
   - blog
 ---
@@ -354,64 +353,152 @@ WebAssemblyはサンドボックスです．
 移植性はソフトウェアの配布と開発を簡単にし，そしてホスト自身やユーザーを保護するツールの提供は絶対に必要です．
 
 > ### What should this system interface look like?
-Given those two key principles, what should the design of the WebAssembly system interface be?
+> Given those two key principles, what should the design of the WebAssembly system interface be?
+
+### このシステムインターフェースはどのようであるべきか?
+2つのキーとなる原則を考慮した時，WebAssemblyのシステムインターフェースはどう設計されるべきでしょう?
 
 > That’s what we’ll figure out through the standardization process. We do have a proposal to start with, though:
 > - Create a modular set of standard interfaces
 > - Start with standardizing the most fundamental module, wasi-core
 
+それは標準化プロセスを通じて明らかになります．
+これらの提案を行う必要があります:
+-  標準インターフェースのモジュラーセットを作成する
+- 最も基本的な wasi-core モジュールの標準化から始める
+
 > What will be in wasi-core?
+
+wasi-core には何が含まれるでしょう?
 
 > wasi-core will contain the basics that all programs need. It will cover much of the same ground as POSIX, including things such as files, network connections, clocks, and random numbers.
 
+wasi-core には全てのプログラムに必要な基本機能が含まれる必要があります．
+これはファイル，ネットワーク接続，時間，乱数を含み，POSIXとほぼ同じ領域をカバーします．
+
 > And it will take a very similar approach to POSIX for many of these things. For example, it will use POSIX’s file-oriented approach, where you have system calls such as open, close, read, and write and everything else basically provides augmentations on top.
+
+これらの多くはPOSIXと非常に良く似た方法を取ります．
+例えば，POSIXのファイル志向アプローチを使用します．オープン，クローズ，書き込みなどの基本的なシステムコールがあり，その他の多くは基本的にその上に拡張として提供されます．
 
 > But wasi-core won’t cover everything that POSIX does. For example, the process concept does not map clearly onto WebAssembly. And beyond that, it doesn’t make sense to say that every WebAssembly engine needs to support process operations like fork. But we also want to make it possible to standardize fork.
 
+ですが， wasi-core は POSIX の全てをカバーするわけではありません．
+プロセスコンセプトが明確に WebAssembly にマッピングされていません．
+全ての WebAssembly エンジンが `fork`のような操作を必要としていると言っても意味がないからです．
+一方で `fork` の標準化を可能なものを作りたいとも思っています．
+
 > This is where the modular approach comes in. This way, we can get good standardization coverage while still allowing niche platforms to use only the parts of WASI that make sense for them.
+
+ここでモジュラーアプローチが登場します．
+この方法は，ニッチなプラットフォームが必要なWASIの一部のみを使いつつ，適切な標準化を行うことができます．
 
 > Languages like Rust will use wasi-core directly in their standard libraries. For example, Rust’s open is implemented by calling __wasi_path_open when it’s compiled to WebAssembly.
 
+Rustのような言語は標準ライブラリからwasi-core を直接扱うことができます．
+例えば，Rustの `open`はWebAssemblyにコンパイルするときに `__wasi_path_open`を呼び出すよう実装されます．
+
 > For C and C++, we’ve created a wasi-sysroot that implements libc in terms of wasi-core functions.
+
+CとC++に対しては， wasi-core関数を実装した libc の wasi-sysroot を作成しました．
 
 > We expect compilers like Clang to be ready to interface with the WASI API, and complete toolchains like the Rust compiler and Emscripten to use WASI as part of their system implementations
 
+Clangのようなコンパイラが WASI API のインターフェースを準備し，
+RustコンパイラやEmscriptenのような完全なツールチェーンがシステム実装の一部でWASIを使うことを期待しています．
+
 > How does the user’s code call these WASI functions?
+
+どうやってユーザーコードが WASI 関数を呼び出すのでしょう?
 
 > The runtime that is running the code passes the wasi-core functions in as imports.
 
+コードを実行しているランタイムは wasi-core関数をインポートして渡します．
+
 > This gives us portability, because each host can have their own implementation of wasi-core that is specifically written for their platform — from WebAssembly runtimes like Mozilla’s wasmtime and Fastly’s Lucet, to Node, or even the browser.
+
+これは移植性をもたらします．それぞれのホスト(MozillaのwasmtimeやFastlyのLucetのようなWebAssemblyライタイムやNode，その他のブラウザ)はプラットフォームのための独自実装の wasi-core を持つことができます．
 
 > It also gives us sandboxing because the host can choose which wasi-core functions to pass in — so, which system calls to allow — on a program-by-program basis. This preserves security.
 
+ホストはどのwasi-core関数を渡すのか(どのシステムコールを許可するのか)をプログラムごとに選択できるため，サンドボックスを提供できます．
+これによりセキュリティを維持できます．
+
 > WASI gives us a way to extend this security even further. It brings in more concepts from capability-based security.
+
+WASIはこの安全性をさらに拡張する方法を提供します．
+機能ベースのセキュリティから多くの概念を導入します．
 
 > Traditionally, if code needs to open a file, it calls open with a string, which is the path name. Then the OS does a check to see if the code has permission (based on the user who started the program).
 
+伝統的に，コードがファイルを開く必要がある場合は，ファイルパス名を文字列として`open`を呼び出します．
+OSはコードが権限を持っているか(実行したユーザーに基づいて)確認します．
+
 > With WASI, if you’re calling a function that needs to access a file, you have to pass in a file descriptor, which has permissions attached to it. This could be for the file itself, or for a directory that contains the file.
+
+WASIの場合，もしファイルアクセスする必要がある関数を呼び出す場合，権限を付与したファイル記述子を渡す必要があります．
+これはファイル自体，もしくはファイルを含むディレクトリに関するものかもしれません．
 
 > This way, you can’t have code that randomly asks to open /etc/passwd. Instead, the code can only operate on the directories that are passed in to it.
 
+この方法では，`/etc/passwd`を開くことをランダムに要求するコードは使用できません．
+その代わり，コードは渡された1つのディレクトリ上でのみ動作します．
+
 > This makes it possible to safely give sandboxed code more access to different system calls — because the capabilities of these system calls can be limited.
+
+このようにシステムコールの機能は制限できるため，サンドボックスコードにさまざまなシステムコールへのアクセスを安全に与えることができるようになります．
 
 > And this happens on a module-by-module basis. By default, a module doesn’t have any access to file descriptors. But if code in one module has a file descriptor, it can choose to pass that file descriptor to functions it calls in other modules. Or it can create more limited versions of the file descriptor to pass to the other functions.
 
+そしてこれはモジュールごとに発生します．
+デフォルトでは，モジュールはファイル記述子へアクセスできません．
+ただし，一つのモジュールのコードがファイル記述子を持っている場合，
+そのファイル記述子を他のモジュールで呼び出す関数に渡すことを選択することができます．
+もしくはより制限したバージョンのファイル記述子を作成他のモジュールへ渡すことができます．
+
 > So the runtime passes in the file descriptors that an app can use to the top level code, and then file descriptors get propagated through the rest of the system on an as-needed basis.
+
+そのため，ランタイムがトップレベルのコードにアプリが利用できるファイル記述子を渡し，そのファイル記述子をシステムの残りの部分に必要に応じて伝播します．
 
 > This gets WebAssembly closer to the principle of least privilege, where a module can only access the exact resources it needs to do its job.
 
+これによりWebAssemblyは最小権限の原則に近づき，モジュールはジョブを実行するのに必要な正確なリソースのみにアクセスできます．
+
 > These concepts come from capability-oriented systems, like CloudABI and Capsicum. One problem with capability-oriented systems is that it is often hard to port code to them. But we think this problem can be solved.
+
+これらのコンセプトはCloudABIやCapsicumなどの機能志向システムからきています．
+機能志向システムの問題の一つは，コードの移植が難しいことです．
+しかし，WebAssemblyこの問題を解決できるでしょう．
 
 > If code already uses openat with relative file paths, compiling the code will just work.
 
+もし既にコードが相対ファイルパスで `openat`を利用している場合，コードをコンパイルしても問題なく動きます．
+
 > If code uses open and migrating to the openat style is too much up-front investment, WASI can provide an incremental solution. With libpreopen, you can create a list of file paths that the application legitimately needs access to. Then you can use open, but only with those paths.
+
+もしコードが `open`を使用しており，`openat`を利用する形式に移行するのに多くの先行投資が必要になる場合，
+WASIは段階的なソリューションを提供できます．
+`libpreopen`を利用すると，アプリケーションが正統にアクセスする必要があるファイルパスのリストを作成できます，
+その後も `open`を利用できますが，そのパスのみに制限されます．
 
 > ### What’s next?
 > We think wasi-core is a good start. It preserves WebAssembly’s portability and security, providing a solid foundation for an ecosystem.
+
+### 次は何?
+wasi-coreは良いスタートだと考えています．
+WebAssemblyの移植性と安全性を維持し，強固な基盤をエコシステムに提供します．
 
 > But there are still questions we’ll need to address after wasi-core is fully standardized. Those questions include:
 > - asynchronous I/O
 > - file watching
 > - file locking
 
+しかし wasi-coreが完全に標準化された後にも対処する必要がある問題がまだあります．
+- 非同期 I/O
+- ファイルかんし
+- ファイルロック
+
 > This is just the beginning, so if you have ideas for how to solve these problems, join us!
+
+これはまだ始まりに過ぎません．
+これらの問題を解決するアイデアを持っている場合は参画してください．
