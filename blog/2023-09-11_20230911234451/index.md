@@ -3,6 +3,9 @@ layout: layouts/blog.njk
 title: "WASIの標準化: ウェブの外でWebAssemblyを実行するためのインターフェース"
 tags:
   - blog
+categories:
+  - WebAssembly
+  - 翻訳
 ---
 
 [Standardizing WASI: A system interface to run WebAssembly outside the web](https://hacks.mozilla.org/2019/03/standardizing-wasi-a-webassembly-system-interface/)の和訳．
