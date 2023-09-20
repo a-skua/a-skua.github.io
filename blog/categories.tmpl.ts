@@ -13,5 +13,5 @@ export default function({ search }) {
   for (const category of categoryMap.keys()) {
     categories.push(category);
   }
-  return `<ul>${categories.map(c => `<li>${c}</li>`).join('')}</ul>`;
+  return `<ul>${categories.sort().map(c => `<li>${c}</li>`).join('')}</ul>`;
 }
