@@ -76,16 +76,16 @@ WASIプロポーザルにWitを使用する方法の詳細はWit in WASIドキ�
 
 ## WASI 設計原則
 
-#### キャパビリティベースセキュリティ
-WASIはキャパビリティベースセキュリティの原則に基づいてデザインされており，Wasmのコンポーネントモデルで提供される機能を使用します．
+#### ケイパビリティベースセキュリティ
+WASIはケイパビリティベースセキュリティの原則に基づいてデザインされており，Wasmのコンポーネントモデルで提供される機能を使用します．
 
 > There are two kinds of capabilities:
 > - Handles, defined in the component-model type system, dynamically identify and provide access to resources. They are unforgeable, meaning there's no way for an instance to acquire access to a handle other than to have another instance explicitly pass one to it.
 > - Link-time capabilities, which are functions which require no handle arguments, are used sparingly, in situations where it's not necessary to identify more than one instance of a resource at runtime. Link-time capabilities are interposable, so they are still refusable in a capability-based security sense.
 
-2つのキャパビリティの種類があります．
+2つのケイパビリティの種類があります．
 - ハンドル，コンポーネントモデル型システムの中に定義され，動的に識別してリソースへのアクセスを提供します．ハンドルへのアクセスを明示的に他のインスタンスへ渡すことを除いてハンドルへのアクセスを取得する方法がなく，偽造ができません．
-- 実行時にリソースが複数のインスタンスの識別を必要としない場合に，リンク時キャパビリティ(ハンドル引数を必要としない関数)は控え目に使用されます，リンク時キャパビリティは挿入可能なため，キャパビリティベースセキュリティの観点では実行拒否可能です．
+- 実行時にリソースが複数のインスタンスの識別を必要としない場合に，リンク時ケイパビリティ(ハンドル引数を必要としない関数)は控え目に使用されます，リンク時ケイパビリティは挿入可能なため，ケイパビリティベースセキュリティの観点では実行拒否可能です．
 
 > WASI has no ambient authorities, meaning that there are no global namespaces at runtime, and no global functions at link time.
 
@@ -93,7 +93,7 @@ WASIには周囲の権限はないため，実行時にグローバル名前空�
 
 > Note that this is a different sense of "capability" than Linux capabilities or the withdrawn POSIX capabilities, which are per-process rather than per-resource.
 
-NOTE: リソースごとではなくプロセスごとのキャパビリティのため，LinuxのキャパビリティやPOSIXのキャパビリティとは別の意味の「キャパビリティ」です．
+NOTE: リソースごとではなくプロセスごとのケイパビリティのため，LinuxのケイパビリティやPOSIXのケイパビリティとは別の意味の「ケイパビリティ」です．
 
 > #### Interposition
 > Interposition in the context of WASI interfaces is the ability for a Webassembly instance to implement a given WASI interface, and for a consumer WebAssembly instance to be able to use this implementation transparently. This can be used to adapt or attenuate the functionality of a WASI API without changing the code using it.
