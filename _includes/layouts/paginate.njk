@@ -5,7 +5,12 @@ layout: layouts/main.njk
   {% for page in results %}
     <li>
       <a class="page-link" href="{{ page.data.url }}">
-        <h2 class="title">{{ page.data.title }}</h2>
+        <h2 class="title">
+          {% if page.data.draft %}
+            <span style="color: red;">!!Draft!!</span>
+          {% endif %}
+          {{ page.data.title }}
+        </h2>
         <p class="description">{{ page.data.content.slice(0, 255) }}</p>
       </a>
       <p class="date">{{ page.data.date.toLocaleDateString() }}</p>
