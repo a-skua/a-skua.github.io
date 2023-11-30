@@ -1,7 +1,7 @@
 ---
 layout: layouts/blog.njk
 title: ガベージコレクタのプログラミング言語を効率的にWebAssemblyに以降する新しい方法
-draft: true
+draft: false
 tags:
   - blog
 categories:
