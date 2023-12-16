@@ -93,6 +93,7 @@ Flutter自体は学生の頃に書いていたというのもあり，情報の�
 - [技術書典15](https://techbookfest.org/event/tbf15) (サークル参加)
 - [技書博9](https://gishohaku.dev/gishohaku9/circles) (サークル参加)
 - [Workers Tech Talks #2](https://workers-tech.connpass.com/event/300546/)
+- [Niigata5分Tech #3](https://niigata-5min-tech.connpass.com/event/303770/) (LT参加) ※来週
 
 技術書典と技書博では，新刊[ご注文はWASIですか?](https://techbookfest.org/product/acW1EbS9XxshmBnDUeZtxj)を出しました．
 また，技術の泉シリーズより[実践入門WebAssembly](https://nextpublishing.jp/book/17203.html)が10月に発売されました．
