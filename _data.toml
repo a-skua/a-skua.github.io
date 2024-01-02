@@ -7,6 +7,10 @@ author = "Asuka"
 create_year = 2018
 repository = "https://github.com/a-skua/a-skua.github.io"
 
+[lume]
+name = "Lume"
+url = "https://lume.land/"
+
 [[nav.contents]]
 title = "Home"
 url = "/"
