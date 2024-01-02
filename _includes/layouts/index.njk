@@ -7,8 +7,8 @@ layout: layouts/main.njk
   <ul>
     {% for article in search.pages("blog", "date=desc").slice(0, 5) %}
       <li>
-        <a href="{{ article.data.url }}">{{ article.data.title }}</a>
-        ({{ article.data.date.toLocaleDateString() }})
+        <a href="{{ article.url }}">{{ article.title }}</a>
+        ({{ article.date.toLocaleDateString() }})
       </li>
     {% endfor %}
   </ul>

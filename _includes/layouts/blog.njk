@@ -19,13 +19,13 @@ layout: layouts/main.njk
       {% set previous = search.previousPage(url, "blog", "date=desc") %}
       &lt;
       {% if previous %}
-        <a href="{{ previous.data.url }}">{{ previous.data.title }}</a>
+        <a href="{{ previous.url }}">{{ previous.title }}</a>
       {% endif %}
     </li>
   <li>
     {% set next = search.nextPage(url, "blog", "date=desc") %}
     {% if next %}
-      <a href="{{ next.data.url }}">{{ next.data.title }}</a>
+      <a href="{{ next.url }}">{{ next.title }}</a>
     {% endif %}
     &gt;
   </li>
