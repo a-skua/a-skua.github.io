@@ -4,7 +4,9 @@ import toml from "lume/plugins/toml.ts";
 import sass from "lume/plugins/sass.ts";
 import codeHighlight from "lume/plugins/code_highlight.ts";
 import nunjucks from "lume/plugins/nunjucks.ts";
+import jsx from "lume/plugins/jsx.ts";
 import feed from "lume/plugins/feed.ts";
+import esbuild from "lume/plugins/esbuild.ts";
 
 // See Supported Languages: https://github.com/highlightjs/highlight.js/blob/main/SUPPORTED_LANGUAGES.md
 import lang_javascript from "npm:highlight.js/lib/languages/javascript";
@@ -17,6 +19,8 @@ site.use(minifyHTML());
 site.use(toml());
 site.use(sass());
 site.use(nunjucks());
+site.use(jsx());
+site.use(esbuild());
 site.use(feed({
   output: ["/blog.rss"],
   query: "blog",
