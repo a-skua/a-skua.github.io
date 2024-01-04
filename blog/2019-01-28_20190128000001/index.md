@@ -9,8 +9,7 @@ categories:
 ---
 
 **`vue.js`を`Typescript`を使って書いてみよう！**
-と思いたち、Typescriptを書き始めたのですが、
-型周りで苦労しているのでメモ。
+と思いたち、Typescriptを書き始めたのですが、 型周りで苦労しているのでメモ。
 
 ## 型がわからない問題
 
@@ -52,4 +51,5 @@ modal.hide();
 パーツを呼び出す側はjavascriptで書いた方が幸せになれる気がする…
 
 ## 参考
+
 [Bootstrap.vue: b-modal](https://bootstrap-vue.js.org/docs/components/modal/)

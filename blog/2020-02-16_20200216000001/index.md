@@ -81,31 +81,30 @@ const MAX_POINTS = 1_000_000;
 
 `go` で言う所の `int`, `uint`に当たる
 
-| Length | Signed | Unsigned |
-| --- | --- | --- |
-| 8-bit | i8 | u8 |
-| 16-bit | i16 | u16 |
-| 32-bit | i32 | u32 |
-| 64-bit | i64 | u64 |
-| 128-bit | i128 | u128 |
-| arch | isize | usize |
+| Length  | Signed | Unsigned |
+| ------- | ------ | -------- |
+| 8-bit   | i8     | u8       |
+| 16-bit  | i16    | u16      |
+| 32-bit  | i32    | u32      |
+| 64-bit  | i64    | u64      |
+| 128-bit | i128   | u128     |
+| arch    | isize  | usize    |
 
-Rust の整数型のデフォルトは `i32`で、
-`64-bit`環境でも最速らしいので困ったら `i32`
+Rust の整数型のデフォルトは `i32`で、 `64-bit`環境でも最速らしいので困ったら
+`i32`
 
 `isize` や `usize` はインデックスの作成などでよく使うらしい
 
 ## 浮動点少数
 
-`f32` と `f64`があり、
-デフォルトは `f64`
+`f32` と `f64`があり、 デフォルトは `f64`
 
 最新CPUにおいてほぼ等速なため、精度の高い `f64`を採用したとのこと
 
 ## 真偽
 
-`bool` は1バイトらしい(1bitとかじゃないみたい)
-多分 `go`とかも 1bitじゃ無いんだろうなー(試してないけど)
+`bool` は1バイトらしい(1bitとかじゃないみたい) 多分 `go`とかも
+1bitじゃ無いんだろうなー(試してないけど)
 
 ## 文字
 
@@ -121,8 +120,7 @@ Rust の整数型のデフォルトは `i32`で、
 let c = 'z';
 ```
 
-ただし、 `charactor != Unicode` らしい
-なんか違うみたい
+ただし、 `charactor != Unicode` らしい なんか違うみたい
 
 ## 複合型
 
@@ -161,10 +159,12 @@ let first = a[0];
 ```
 
 ## 演算
+
 基本的に同じ型同士しか出来ないみたい
 
 試しに `float` + `integer` したら怒られた
 
 ## 参考
+
 - [The Rust Programming Language: 2. Programming a Guessing Game](https://doc.rust-lang.org/book/ch02-00-guessing-game-tutorial.html)
 - [The Rust Programming Language: 3.2. Data Types](https://doc.rust-lang.org/book/ch03-02-data-types.html)

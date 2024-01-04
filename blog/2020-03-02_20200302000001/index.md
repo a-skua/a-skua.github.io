@@ -8,8 +8,8 @@ categories:
 ---
 
 ## 共有動作の定義: defining shared behavior
-トレイトは、特定の型が持つ機能についてRustコンパイラに伝え、
-他の型と共有できる
+
+トレイトは、特定の型が持つ機能についてRustコンパイラに伝え、 他の型と共有できる
 
 トレイトを使用して、共有の動作を抽象的な方法で定義できる
 
@@ -20,10 +20,10 @@ categories:
 多い機能に似ている
 
 ## トレイトの定義: defining a trait
+
 方の動作は、その型で呼び出すことができるメソッドで構成される
 
-全ての型で同じメソッドを呼び出すことができる場合、
-異なる型は同じ動作を共有する
+全ての型で同じメソッドを呼び出すことができる場合、 異なる型は同じ動作を共有する
 
 トレイト定義は、メソッドシグネチャをグループ化し、
 何らかの目的を達成するために必要な一連の動作を定義する方法である
@@ -83,6 +83,7 @@ let tweet = Tweet {
 
 println!("1 new tweet: {}", tweet.summarize());
 ```
+
 この`Summary`と`NewsArticle`と`Tweet`は同じ`lib.rs`で定義していることに注意
 (全て同じスコープにいる)
 
@@ -94,8 +95,8 @@ println!("1 new tweet: {}", tweet.summarize());
 
 `use aggregator::Summary;`を指定することで、`Summary`を実装できるようになる
 
-(`use <PROJECT_NAME>::*`以外にも、
-`mod lib;`, `use crate::lib::*`で動作することを確認
+(`use <PROJECT_NAME>::*`以外にも、 `mod lib;`,
+`use crate::lib::*`で動作することを確認
 
 ただし、推奨されないと思われる
 
@@ -113,8 +114,7 @@ println!("1 new tweet: {}", tweet.summarize());
 
 ただし、外部型に外部特性を実装することは出来ない
 
-例えば、
-`Display`トレイトと`Vec<T>`は標準ライブラリで実装されており、
+例えば、 `Display`トレイトと`Vec<T>`は標準ライブラリで実装されており、
 `aggregator`に対してローカルでないため、
 `Vec<T>`に対して`Display`トレイトを実装することは出来ない
 
@@ -127,11 +127,13 @@ println!("1 new tweet: {}", tweet.summarize());
 Rustはどの実装を使用するかを知ることが出来ない
 
 ## デフォルト実装: default implementations
+
 すべての型の全てのメソッドの実装を要求する代わりに、
 トレイトの一部または全てのメソッドにデフォルトの動作を設定すると便利な場合がある
 
 これは、特定の型にトレイトを実装するときに各メソッドのデフォルトの動作を維持
 またはオーバーライドできる
+
 ```rust
 pub trait Summary {
     fn summarize(&self) -> String {
@@ -139,12 +141,14 @@ pub trait Summary {
     }
 }
 ```
+
 カスタム実装を定義する代わりに、デフォルト実装を使用し、
 `NewsArticle`のインスタンスに`summarize`を実装するには、
 `impl Summary for NewsArticle {}`のように空の`impl`ブロックを指定する
 
 デフォルト実装は、他のメソッドにデフォルト実装がない場合でも、
 同じトレイトで他のメソッドを呼び出すことができる
+
 ```rust
 pub trait Summary {
     fn summarize_author(&self) -> String;
@@ -154,6 +158,7 @@ pub trait Summary {
     }
 }
 ```
+
 ```rust
 impl Summary for Tweet {
     fn summarize_author(&self) -> String {
@@ -161,6 +166,7 @@ impl Summary for Tweet {
     }
 }
 ```
+
 ```rust
 let tweet = Tweet {
     username: String::from("horse_ebooks"),
@@ -171,17 +177,20 @@ let tweet = Tweet {
 
 println!("1 new tweet: {}", tweet.summarize());
 ```
+
 同じメソッドのオーバーライド実装から
 デフォルト実装を呼び出すことは出来ないことに注意
 
 ## 引数としてのトレイト: traits as parameters
-トレイトを使用することで、
-多くの異なる型を受け入れる関数を定義することができる
+
+トレイトを使用することで、 多くの異なる型を受け入れる関数を定義することができる
+
 ```rust
 pub fn notify(item: impl Summary) {
     println!("Breaking news! {}", item.summarize());
 }
 ```
+
 型の代わりに、`impl`とトレイト名を渡している
 
 `NewsArticle`または`Tweet`のインスタンスを渡すことができるが、
@@ -189,40 +198,52 @@ pub fn notify(item: impl Summary) {
 コンパイルされない
 
 ## トレイトバインド構文: trait bound syntax
-`impl Trait`構文は簡単な場合に機能するが、
-実際には長い形式の糖衣構文であり、
+
+`impl Trait`構文は簡単な場合に機能するが、 実際には長い形式の糖衣構文であり、
 これはトレイトバインドと呼ばれる
+
 ```rust
 pub fn notify<T: Summary>(item: T) {
     println!("Breaking news! {}", item.summarize());
 }
 ```
+
 `impl Trait`構文は単純な場合により簡潔なコードになる
+
 ```rust
 pub fn notify(item1: impl Summary, item2: impl Summary) {
 ```
+
 もし、`item1`と`item2`に同じ型を強制したい場合、
 トレイトバインドを使用して表現できる
+
 ```rust
 pub fn notify<T: Summary>(item1: T, item2: T) {
 ```
 
 ## `+`構文を使用して、複数のトレイトバインドを指定する
+
 複数のトレイトバインドを指定することができる
+
 ```rust
 pub fn notify(item: impl Summary + Display) {
 ```
+
 ```rust
 pub fn notify<T: Summary + Display>(item: T) {
 ```
 
 ## `where`句によるトレイトバインドの明確化
+
 あまりにも多くのトレイトバインドを使用することには欠点がある
 多くのトレイトバインド情報を含めることは、関数シグネチャを読みにくくする
+
 ```rust
 fn some_function<T: Display + Clone, U: Clone + Debug>(t: T, u: U) -> i32 {
 ```
+
 `where`句を使用することで、可読性を上げることができる
+
 ```rust
 fn some_function<T, U>(t: T, u: U) -> i32
     where T: Display + Clone,
@@ -242,6 +263,7 @@ fn returns_summarizable() -> impl Summary {
     }
 }
 ```
+
 戻り値の型に`impl Summary`を使用することで、
 `Summary`トレイトを実装する型を返すように指定する
 
@@ -273,13 +295,16 @@ fn returns_summarizable(switch: bool) -> impl Summary {
 ```
 
 ## トレイトバインドで`largest`関数を修正する: fixing the largest function with trait bounds
+
 `>`演算子は、標準ライブラリトレイト`std::cmp::PartialOrd`のデフォルトメソッドとして定義されているため、
 `T`のトレイトバインドで`PartialOrd`を指定する必要がある
+
 ```rust
 fn largest<T: PartialOrd>(list: &[T]) -> T {
 ```
-また、`let mut largest = list[0]`を行うには、
-コピートレイトの実装が必要である
+
+また、`let mut largest = list[0]`を行うには、 コピートレイトの実装が必要である
+
 ```rust
 fn largest<T: PartialOrd + Copy>(list: &[T]) -> T {
     let mut largest = list[0];
@@ -305,6 +330,7 @@ fn main() {
     println!("The largest char is {}", result);
 }
 ```
+
 `Copy`トレイトを実装する型に制限したくない場合は、
 `Copy`ではなく`Clone`を指定する
 
@@ -317,6 +343,7 @@ fn main() {
 ヒープの割当を回避することもできる
 
 ## トレイトバインドを使用し、メソッドを条件付きで実装する: using trait bounds to conditionally implement methods
+
 ジェネリック型パラメータを使用する`impl`ブロックでバインドされた
 トレイトを使用することにより、指定されたトレイトを実装する型に対して
 条件付きでメソッドを実装できる
@@ -348,28 +375,31 @@ impl<T: Display + PartialOrd> Pair<T> {
     }
 }
 ```
-別のトレイトを実装する、任意の型のトレイトを
-条件付きで実装することもできる
+
+別のトレイトを実装する、任意の型のトレイトを 条件付きで実装することもできる
 
 トレイトバインドを満たす任意の方のトレイトの実装はブランケット実装と呼ばれ、
 Rust標準ライブラリで広く使用されている
 
 例えば、標準ライブラリは`Display`トレイトを実装する任意の型に
 `ToString`トレイトを実装している
+
 ```rust
 impl<T: Display> ToString for T {
     // --snip--
 }
 ```
+
 標準ライブラリにはこのブランケット実装があるため、
 Displayトレイトを実装する任意の型の`ToString`トレイトによって定義された
 `to_string`メソッドを呼び出すことができる
 
-整数は、`Display`を実装しているため、
-整数を対応する`String`に変換できる
+整数は、`Display`を実装しているため、 整数を対応する`String`に変換できる
+
 ```rust
 let s = 3.to_string();
 ```
+
 トレイトとトレイトバインドにより、ジェネリック型パラメーターを使用して、重複を減らすコードを記述できるが、
 ジェネリック型に特定の動作をさせることをコンパイラに指定することもできる
 

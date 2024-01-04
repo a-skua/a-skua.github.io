@@ -73,7 +73,7 @@ categories:
 
 ```js
 // コードはこのように表示されます．
-const say = () => 'hello, world';
+const say = () => "hello, world";
 export default say;
 ```
 

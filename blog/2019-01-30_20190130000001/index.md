@@ -34,9 +34,10 @@ set ftp:ssl-allow no
 
 ## 501 Not Owner → Delaying before reconnect
 
-上記で基本的に解決するのだけど、 `Delaying before reconnect` で30秒ほど待たされる
+上記で基本的に解決するのだけど、 `Delaying before reconnect`
+で30秒ほど待たされる
 
-``` shell
+```shell
 set net:reconnect-interval-base 4
 ```
 
