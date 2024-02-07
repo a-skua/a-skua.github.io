@@ -1,6 +1,6 @@
 .PHONY: serve
 serve:
-	deno task serve -d
+	deno task serve
 
 .PHONY: new
 new:
