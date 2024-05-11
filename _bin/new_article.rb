@@ -1,4 +1,4 @@
-#!/usr/bin/ruby
+#!/usr/bin/env ruby
 
 new_dir = "blog/#{Time.new.strftime '%Y-%m-%d_%Y%m%d%H%M%S'}"
 
