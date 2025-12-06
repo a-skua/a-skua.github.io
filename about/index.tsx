@@ -22,6 +22,22 @@ export default (_data: Lume.Data, _helpers: Lume.Helpers) => (
     <section>
       <h2>著書</h2>
       <my-book
+        img-alt="「WebAssembly Cookbook vol.4」表紙"
+        img-src="https://techbookfest.org/api/image/hj9TggKwpc8rbz12EQVdmX.png?size=432"
+      >
+        <h3>WebAssembly Cookbook vol.4</h3>
+        <p>
+          技術書典19にて配布した同人誌．
+          <hr />
+          <a
+            href="https://techbookfest.org/product/pyDdwmuzL1ke51Btak7NAa"
+            target="_blank"
+          >
+            技術書典マーケット
+          </a>
+        </p>
+      </my-book>
+      <my-book
         img-alt="「WebAssembly Cookbook vol.3」表紙"
         img-src="https://techbookfest.org/api/image/wrz3KYMyxeB6Pqi02GeQ0j.png?size=432"
       >
