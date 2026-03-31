@@ -1,0 +1,26 @@
+services:
+  init-cache:
+    image: denoland/deno:latest
+    volumes:
+      - deno-cache:/home/deno/.cache
+    entrypoint: chown deno:deno /home/deno/.cache
+
+  deno:
+    image: denoland/deno:latest
+    user: deno
+    working_dir: /home/deno/app
+    volumes:
+      - .:/home/deno/app
+      - deno-cache:/home/deno/.cache
+    ports:
+      - "${PORT:-3000}:3000"
+    command: task lume -s --port 3000
+    depends_on:
+      init-cache:
+        condition: service_completed_successfully
+    environment:
+      DENO_DIR: /home/deno/.cache/deno
+      LUME_DRAFTS: "true"
+
+volumes:
+  deno-cache:

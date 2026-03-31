@@ -1,6 +1,16 @@
+PORT ?= 3000
+
 .PHONY: serve
 serve:
-	deno task serve
+	PORT=$(PORT) docker compose up
+
+.PHONY: down
+down:
+	docker compose down
+
+.PHONY: build
+build:
+	docker compose run --rm deno task lume
 
 .PHONY: new
 new:
