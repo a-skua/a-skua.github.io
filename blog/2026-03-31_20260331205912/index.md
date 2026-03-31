@@ -1,7 +1,7 @@
 ---
 layout: layouts/blog.njk
 title: (post|pre)installを防ぐためにやっていること
-draft: true
+draft: false
 tags:
   - blog
 ---
