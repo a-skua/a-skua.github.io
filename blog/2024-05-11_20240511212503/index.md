@@ -2,10 +2,10 @@
 layout: layouts/blog.njk
 title: Cloudflare WorkersでDartを動かす
 tags:
-- blog
+  - blog
 categories:
-- Dart
-- Cloudflare Workers
+  - Dart
+  - Cloudflare Workers
 ---
 
 ## 環境構築
@@ -19,6 +19,7 @@ categories:
    # すでにNode.jsのプロジェクトとして作っているので`--force`オプションをつける
    dart init --force
    ```
+
 ## 動かす
 
 1. Dartのコードを書く
@@ -40,7 +41,8 @@ categories:
    dart compile wasm ./bin/main.dart -o src/__dart/main.wasm
    ```
 
-3. JSのコードを書く(Cloudflare は `import mod from "./module.wasm"`でWasmモジュールを読み込むことができる)．
+3. JSのコードを書く(Cloudflare は
+   `import mod from "./module.wasm"`でWasmモジュールを読み込むことができる)．
    ```ts
    // src/index.ts
    import { instantiate, invoke } from "./__dart/index.mjs";
@@ -77,6 +79,7 @@ categories:
 Deploy先: [example-dart.askua.dev](https://example-dart.askua.dev)
 
 ### Import Modules
+
 `WebAssembly.instantiate`を使ってWasmモジュールを読み込むときに，モジュールを渡すことで，Wasmモジュール内で使う関数を定義することができる．
 
 Dartでは，次のように設定することでうまくいく．
@@ -88,7 +91,8 @@ Dartでは，次のように設定することでうまくいく．
 ```
 
 ただ，引数と戻り値は`double`と`JSAny`以外使えないと思った方が良い．
-`String`に関してはコンパイルした時にできる `index.mjs`の中にある`stringFromDartString`と`stringToDartString`を良い感じにカスタムすることで使えなくはないが，この辺りのJSの型をDartで良い感じに扱うのであれば`globalThis`に置くのが無難なよう．
+`String`に関してはコンパイルした時にできる
+`index.mjs`の中にある`stringFromDartString`と`stringToDartString`を良い感じにカスタムすることで使えなくはないが，この辺りのJSの型をDartで良い感じに扱うのであれば`globalThis`に置くのが無難なよう．
 
 下記の書き方は現状推奨しないが，参考実装として置いておく．
 

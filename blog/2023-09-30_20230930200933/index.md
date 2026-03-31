@@ -31,14 +31,14 @@ categories:
 モジュールは2種類あります:
 
 > - A command exports a function named _start, with no arguments and no return
-  > values. _start is the default export which is called when the user doesn't
-  > select a specific function to call. Commands may also export additional
-  > functions, (similar to "multi-call" executables), which may be explicitly
-  > selected by the user to run instead. Except as noted below, commands shall
-  > not export any mutable globals, tables, or linear memories. Command
-  > instances may assume that they will be called from the environment at most
-  > once. Command instances may assume that none of their exports are accessed
-  > outside the duration of that call.
+>   values. _start is the default export which is called when the user doesn't
+>   select a specific function to call. Commands may also export additional
+>   functions, (similar to "multi-call" executables), which may be explicitly
+>   selected by the user to run instead. Except as noted below, commands shall
+>   not export any mutable globals, tables, or linear memories. Command
+>   instances may assume that they will be called from the environment at most
+>   once. Command instances may assume that none of their exports are accessed
+>   outside the duration of that call.
 
 - コマンドは引数の戻り値のない`_start`と呼ばれる関数をエクスポートします．
 
@@ -51,12 +51,12 @@ categories:
   コマンドインスタンスはその呼び出し期間外に外部からエクスポートにアクセスされないと想定します．
 
 > - All other modules are reactors. A reactor may export a function named
-  > _initialize, with no arguments and no return values. If an _initialize
-  > export is present, reactor instances may assume that it will be called by
-  > the environment at most once, and that none of their other exports are
-  > accessed before that call. After being instantiated, and after any
-  > _initialize function is called, a reactor instance remains live, and its
-  > exports may be accessed.
+>   _initialize, with no arguments and no return values. If an _initialize
+>   export is present, reactor instances may assume that it will be called by
+>   the environment at most once, and that none of their other exports are
+>   accessed before that call. After being instantiated, and after any
+>   _initialize function is called, a reactor instance remains live, and its
+>   exports may be accessed.
 
 - 全ての他のモジュールはリアクターです．リアクターは
   `_initialize`と呼ばれる引数も戻り値も持たない関数をエクスポートできます．

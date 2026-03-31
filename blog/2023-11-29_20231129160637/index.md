@@ -26,10 +26,10 @@ categories:
 実際には，2つのアプローチがあります．
 
 > - The “traditional” porting approach, in which an existing implementation of
-  > the language is compiled to WasmMVP, that is, the WebAssembly Minimum Viable
-  > Product that launched in 2017.
+>   the language is compiled to WasmMVP, that is, the WebAssembly Minimum Viable
+>   Product that launched in 2017.
 > - The WasmGC porting approach, in which the language is compiled down to GC
-  > constructs in Wasm itself that are defined in the recent GC proposal.
+>   constructs in Wasm itself that are defined in the recent GC proposal.
 
 - 言語の実装をそのままWasmMVP(2017年に公開されたWebAssembly Minimum Viable
   Product)にコンパイルする伝統的な移行方法．
@@ -434,11 +434,11 @@ func foo() {
 
 > - Escape analysis to move heap allocations to locals.
 > - Devirtualization to turn indirect calls into direct ones (that can then be
-  > inlined, potentially).
+>   inlined, potentially).
 > - More powerful global dead code elimination.
 > - Whole-program type-aware content flow analysis (GUFA).
 > - Cast optimizations such as removing redundant casts and moving them to
-  > earlier locations.
+>   earlier locations.
 > - Type pruning.
 > - Type merging.
 > - Type refining (for locals, globals, fields, and signatures).
@@ -556,15 +556,15 @@ if (ref instanceof Type) {
 > If you’re interested in using WasmGC, the following links might be useful:
 
 > - Various toolchains have support for WasmGC today, including Dart, Java
-  > (J2Wasm), Kotlin, OCaml (wasm_of_ocaml), and Scheme (Hoot).
+>   (J2Wasm), Kotlin, OCaml (wasm_of_ocaml), and Scheme (Hoot).
 > - The source code of the small program whose output we showed in the developer
-  > tools section is an example of writing a “hello world” WasmGC program by
-  > hand. (In particular you can see the $Node type defined and then created
-  > using struct.new.)
+>   tools section is an example of writing a “hello world” WasmGC program by
+>   hand. (In particular you can see the $Node type defined and then created
+>   using struct.new.)
 > - The Binaryen wiki has documentation about how compilers can emit WasmGC code
-  > that optimizes well. The earlier links to the various WasmGC-targeting
-  > toolchains can also be useful to learn from, for example, you can look at
-  > the Binaryen passes and flags that Java, Dart, and Kotlin use.
+>   that optimizes well. The earlier links to the various WasmGC-targeting
+>   toolchains can also be useful to learn from, for example, you can look at
+>   the Binaryen passes and flags that Java, Dart, and Kotlin use.
 
 ## Summary
 

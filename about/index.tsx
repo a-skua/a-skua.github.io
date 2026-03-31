@@ -17,10 +17,28 @@ declare global {
 export default (_data: Lume.Data, _helpers: Lume.Helpers) => (
   <>
     <p>
-      <a href="https://recruit.monicle.co.jp/" target="_blank">株式会社モニクル</a>に所属するソフトウェアエンジニア．
+      <a href="https://recruit.monicle.co.jp/" target="_blank">
+        株式会社モニクル
+      </a>に所属するソフトウェアエンジニア．
     </p>
     <section>
       <h2>著書</h2>
+      <my-book
+        img-alt="「WebAssembly Cookbook vol.5」表紙"
+        img-src="https://techbookfest.org/api/image/q4mPiguqxVgQL2hmuKrmUq.png?size=432"
+      >
+        <h3>WebAssembly Cookbook vol.5</h3>
+        <p>
+          技術書典20にて配布した同人誌．
+          <hr />
+          <a
+            href="https://techbookfest.org/product/aA4Av5Bcu6ztjDfZiMgXWJ"
+            target="_blank"
+          >
+            技術書典マーケット
+          </a>
+        </p>
+      </my-book>
       <my-book
         img-alt="「WebAssembly Cookbook vol.4」表紙"
         img-src="https://techbookfest.org/api/image/hj9TggKwpc8rbz12EQVdmX.png?size=432"
@@ -108,8 +126,8 @@ export default (_data: Lume.Data, _helpers: Lume.Helpers) => (
       >
         <h3>ご注文はWASIですか??</h3>
         <p>
-          技術書典16にて配布した同人誌．
-          「ご注文はWASIですか?」の続編で，WASI 0.2の仕様を紹介する本です．
+          技術書典16にて配布した同人誌． 「ご注文はWASIですか?」の続編で，WASI
+          0.2の仕様を紹介する本です．
           <hr />
           <a
             href="https://techbookfest.org/product/8Fshgy7YrSyQGGYkyb4u0a"
@@ -125,8 +143,7 @@ export default (_data: Lume.Data, _helpers: Lume.Helpers) => (
       >
         <h3>ご注文はWASIですか?</h3>
         <p>
-          技術書典15にて配布した同人誌．
-          WASI 0.1の仕様を紹介する本です．
+          技術書典15にて配布した同人誌． WASI 0.1の仕様を紹介する本です．
           <hr />
           <a
             href="https://techbookfest.org/product/acW1EbS9XxshmBnDUeZtxj"

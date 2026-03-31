@@ -11,10 +11,10 @@ categories:
 
 ```scss
 .paginator {
-	display: flex;
-	&>p {
-		flex-grow: 1;
-	}
+  display: flex;
+  & > p {
+    flex-grow: 1;
+  }
 }
 ```
 
@@ -36,11 +36,11 @@ categories:
 
 ```scss
 .paginator {
-	display: flex;
-	&>p {
-		width: 0;
-		flex-grow: 1;
-	}
+  display: flex;
+  & > p {
+    width: 0;
+    flex-grow: 1;
+  }
 }
 ```
 
