@@ -10,7 +10,7 @@ down:
 
 .PHONY: build
 build:
-	docker compose run --rm deno task lume
+	docker compose run --rm node sh -c "npm ci --ignore-scripts && npm run build"
 
 .PHONY: new
 new:

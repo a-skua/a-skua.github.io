@@ -1,0 +1,21 @@
+{
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "LUME_DRAFTS=false lume build",
+    "serve": "LUME_DRAFTS=true lume build -s"
+  },
+  "dependencies": {
+    "@lumeland/lume": "^4.0.2",
+    "@lumeland/plugin-code-highlight": "^1.0.0",
+    "@lumeland/plugin-esbuild": "^1.0.0",
+    "@lumeland/plugin-extract-date": "^1.0.0",
+    "@lumeland/plugin-feed": "^1.0.0",
+    "@lumeland/plugin-jsx": "^1.0.0",
+    "@lumeland/plugin-minify-html": "^1.0.0",
+    "@lumeland/plugin-nunjucks": "^1.0.0",
+    "@lumeland/plugin-sass": "^1.0.1",
+    "highlight.js": "^11.12.0",
+    "lit": "^3.3.3"
+  }
+}

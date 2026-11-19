@@ -1,20 +1,20 @@
-import * as React from "npm:react";
-
 export const title = "About";
 
 export const layout = "layouts/main.njk";
+
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      "my-book": React.DetailedHTMLProps<
-        React.HTMLAttributes<HTMLElement>,
-        HTMLElement
-      >;
+      "my-book": {
+        "img-alt"?: string;
+        "img-src"?: string;
+        children?: JSX.Children;
+      };
     }
   }
 }
 
-export default (_data: Lume.Data, _helpers: Lume.Helpers) => (
+export default () => (
   <>
     <p>
       <a href="https://recruit.monicle.co.jp/" target="_blank">

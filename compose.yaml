@@ -1,26 +1,23 @@
 services:
-  init-cache:
-    image: denoland/deno:latest
+  init-node-modules:
+    image: node:24
     volumes:
-      - deno-cache:/home/deno/.cache
-    entrypoint: chown deno:deno /home/deno/.cache
+      - node-modules:/home/node/app/node_modules
+    entrypoint: chown node:node /home/node/app/node_modules
 
-  deno:
-    image: denoland/deno:latest
-    user: deno
-    working_dir: /home/deno/app
+  node:
+    image: node:24
+    user: node
+    working_dir: /home/node/app
     volumes:
-      - .:/home/deno/app
-      - deno-cache:/home/deno/.cache
+      - .:/home/node/app
+      - node-modules:/home/node/app/node_modules
     ports:
       - "${PORT:-3000}:3000"
-    command: task lume -s --port 3000
+    command: sh -c "npm ci --ignore-scripts && npm run serve -- --port 3000"
     depends_on:
-      init-cache:
+      init-node-modules:
         condition: service_completed_successfully
-    environment:
-      DENO_DIR: /home/deno/.cache/deno
-      LUME_DRAFTS: "true"
 
 volumes:
-  deno-cache:
+  node-modules:

@@ -2,3 +2,5 @@ _site/
 .sass-cache/
 *test.md
 *.swp
+node_modules/
+_cache/

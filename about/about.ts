@@ -1,4 +1,4 @@
-import { css, html, LitElement } from "npm:lit";
+import { css, html, LitElement } from "lit";
 
 export class MyBook extends LitElement {
   private imgAlt: string;
